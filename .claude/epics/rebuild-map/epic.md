@@ -1,9 +1,9 @@
 ---
 name: rebuild-map
-status: backlog
+status: completed
 created: 2025-11-18T20:41:58Z
 updated: 2025-11-18T20:44:00Z
-progress: 0%
+progress: 100%
 prd: .claude/prds/rebuild-map.md
 github: https://github.com/yimingll/tianjing-map-rebuild/issues/1
 ---
