@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @font-face {
+      font-family: 'Sarasa Term SC Nerd';
+      src: url('/fonts/SarasaTermSCNerd-Regular.ttf') format('truetype');
+    }
+    body {
+      font-family: 'Sarasa Term SC Nerd', monospace;
+      font-size: 14px;
+      line-height: 1.2;
+      background: #1a1a1a;
+      color: #e0e0e0;
+      padding: 20px;
+    }
+    .test {
+      white-space: pre;
+      background: #2a2a2a;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    .ruler {
+      white-space: pre;
+      color: #666;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h2>字符宽度测试</h2>
+
+  <div class="ruler">0----+----1----+----2----+----3----+----4----+----5----+----6----+----7</div>
+  <div class="test">╔══════════════════════════════════════════════════════════════════════╗</div>
+
+  <div class="ruler">0----+----1----+----2----+----3----+----4----+----5----+----6----+----7</div>
+  <div class="test">║                                                                      ║</div>
+
+  <div class="ruler">0----+----1----+----2----+----3----+----4----+----5----+----6----+----7</div>
+  <div class="test">║         ║ ✦║          X I U X I A N    M U D          ║✦ ║         ║</div>
+
+  <div class="ruler">0----+----1----+----2----+----3----+----4----+----5----+----6----+----7</div>
+  <div class="test">║           ✿~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~✿             ║</div>
+
+  <div class="ruler">0----+----1----+----2----+----3----+----4----+----5----+----6----+----7</div>
+  <div class="test">║                      "以玄鉴之眼,观万世沉浮"                        ║</div>
+
+  <div class="ruler">0----+----1----+----2----+----3----+----4----+----5----+----6----+----7</div>
+  <div class="test">║    ║         天地初开,鸿蒙未判,上古仙人炼制玄鉴宝镜,           ║  ║</div>
+
+  <div class="ruler">0----+----1----+----2----+----3----+----4----+----5----+----6----+----7</div>
+  <div class="test">║    ║  ✦仙界实时✦                                                ║  ║</div>
+
+  <div class="ruler">0----+----1----+----2----+----3----+----4----+----5----+----6----+----7</div>
+  <div class="test">║    ║  在线修士:   1 人           版本: 玄鉴初启 5.0.1           ║  ║</div>
+
+  <div class="ruler">0----+----1----+----2----+----3----+----4----+----5----+----6----+----7</div>
+  <div class="test">║        "一卷仙录,记载千秋功过;一面玄鉴,映照万世真相。"            ║</div>
+
+  <h3>单个字符宽度测试</h3>
+  <div class="test">a
+aa
+aaa
+中
+中中
+中中中
+✦
+✦✦
+✦✦✦
+✿
+✿✿
+✿✿✿</div>
+
+  <script>
+    document.fonts.ready.then(() => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      ctx.font = '14px "Sarasa Term SC Nerd"';
+
+      const chars = ['a', '中', '✦', '✿', '⚡', '✨', '📖', '║', '═'];
+      console.log('字符宽度测量:');
+      chars.forEach(char => {
+        const width = ctx.measureText(char).width;
+        console.log(`'${char}': ${width.toFixed(2)}px`);
+      });
+
+      const aWidth = ctx.measureText('a').width;
+      console.log(`\n基准宽度 (字母a): ${aWidth.toFixed(2)}px`);
+
+      chars.forEach(char => {
+        const width = ctx.measureText(char).width;
+        const ratio = width / aWidth;
+        console.log(`'${char}': ${ratio.toFixed(2)}倍`);
+      });
+    });
+  </script>
+</body>
+</html>

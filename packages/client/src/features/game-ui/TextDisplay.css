@@ -1,0 +1,331 @@
+.text-display-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.text-display {
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  border: 2px solid var(--primary);
+  padding: 15px;
+  overflow-y: auto;
+  font-family: var(--font-family);
+  font-size: var(--base-font-size, 14px);
+  font-weight: 300;  /* 从 400 改为 300,更细一点 */
+  line-height: 1.4;
+  letter-spacing: 0;
+  box-shadow:
+    0 0 20px var(--glow),
+    inset 0 0 30px rgba(0, 0, 0, 0.7),
+    inset 0 0 10px var(--glow);
+  position: relative;
+  text-shadow: 0 0 5px var(--glow);
+}
+
+/* 水墨边框效果 */
+.text-display::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: var(--primary);
+  z-index: -1;
+  opacity: 0.2;
+}
+
+.text-display::-webkit-scrollbar {
+  width: 12px;
+}
+
+.text-display::-webkit-scrollbar-track {
+  background: var(--background);
+  border: 1px solid var(--primary);
+}
+
+.text-display::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border: 1px solid var(--background);
+  box-shadow: 0 0 5px var(--glow);
+}
+
+.message {
+  margin-bottom: 8px;
+  display: flex;
+  gap: 10px;
+}
+
+.message-time {
+  color: var(--textDim);
+  font-size: calc(var(--base-font-size, 14px) * 0.79);
+  min-width: 70px;
+}
+
+.message-content {
+  flex: 1;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  font-family: inherit;
+}
+
+.message-content * {
+  font-family: inherit;
+}
+
+/* 不同消息类型的颜色 */
+.msg-系统 .message-content {
+  color: var(--msgSystem);
+  font-weight: bold;
+}
+
+.msg-叙述 .message-content {
+  color: var(--msgNarrative);
+}
+
+.msg-描述 .message-content {
+  color: var(--msgDescription);
+  font-style: italic;
+}
+
+.msg-命令 .message-content {
+  color: var(--msgCommand);
+}
+
+.msg-命令::before {
+  content: '> ';
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.msg-响应 .message-content {
+  color: var(--msgResponse);
+}
+
+.msg-战斗 .message-content {
+  color: var(--msgCombat);
+  font-weight: bold;
+  text-shadow: 0 0 5px currentColor;
+}
+
+.msg-动作 .message-content {
+  color: var(--msgAction);
+}
+
+.msg-帮助 .message-content {
+  color: var(--msgHelp);
+}
+
+.msg-错误 .message-content {
+  color: var(--msgError);
+  font-weight: bold;
+}
+
+/* 出口链接样式 */
+.exit-link {
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+
+.exit-link:hover {
+  background-color: var(--primary);
+  color: var(--background) !important;
+  border-color: var(--secondary);
+  box-shadow: 0 0 15px var(--glow);
+  transform: translateY(-2px);
+  position: relative;
+  z-index: 5;
+  text-decoration: none;
+}
+
+.exit-link:active {
+  transform: translateY(0);
+}
+
+.exit-link:hover::after {
+  content: " ➤";
+  font-size: 0.9em;
+  margin-left: 4px;
+}
+
+/* 清空按钮样式 - 与快捷命令按钮保持一致 */
+.clear-button {
+  position: absolute;
+  bottom: 25px;  /* 增加底部边距，避开滚动条 */
+  right: 20px;   /* 在容器层级，避开滚动条区域 */
+  background: var(--background);
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: calc(var(--base-font-size, 14px) * 0.79);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 0 5px var(--glow);
+  overflow: hidden;
+  box-shadow:
+    0 0 10px var(--glow),
+    inset 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+/* 按钮内部光效 */
+.clear-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, var(--glow), transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+  border-radius: 50%;
+}
+
+.clear-button:hover::before {
+  width: 300%;
+  height: 300%;
+}
+
+.clear-button:hover {
+  background: var(--primary);
+  color: var(--background);
+  box-shadow:
+    0 0 20px var(--glow),
+    0 0 40px var(--glow),
+    inset 0 0 10px rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px) scale(1.05);
+  border-color: var(--secondary);
+}
+
+.clear-button:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow:
+    0 0 10px var(--glow),
+    inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* 欢迎Banner消息样式 */
+.msg-welcome-banner {
+  display: block;
+  margin: 20px 0;
+}
+
+.msg-welcome-banner .message-time {
+  display: none; /* 隐藏时间戳 */
+}
+
+/* 调整 WelcomeBanner 在 TextDisplay 中的显示 */
+.msg-welcome-banner .welcome-banner {
+  max-width: 100%;
+  margin: 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* 房间标题样式 */
+.msg-room_title .message-content {
+  color: var(--primary);
+  font-weight: bold;
+  text-align: center;
+  font-size: calc(var(--base-font-size, 14px) * 1.1);
+  margin: 10px 0 5px 0;
+  text-shadow: 0 0 10px var(--glow);
+}
+
+/* 房间描述样式 */
+.msg-description .message-content {
+  color: #E0E0E0;
+  font-style: normal;
+  line-height: 1.6;
+  padding: 5px 0;
+  text-align: justify;
+}
+
+/* 出口信息样式 */
+.msg-exits .message-content {
+  color: var(--primary);
+  margin: 8px 0;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 3px solid var(--secondary);
+  border-radius: 4px;
+}
+
+/* NPC列表样式 */
+.msg-npcs .message-content {
+  color: #FFA500;
+  margin: 5px 0;
+  padding: 5px;
+  background: rgba(255, 165, 0, 0.1);
+  border-left: 3px solid #FFA500;
+  border-radius: 4px;
+}
+
+/* 玩家列表样式 */
+.msg-players .message-content {
+  color: #00FFFF;
+  margin: 5px 0;
+  padding: 5px;
+  background: rgba(0, 255, 255, 0.1);
+  border-left: 3px solid #00FFFF;
+  border-radius: 4px;
+}
+
+/* ==================== 出口文本样式（仅显示，无点击功能） ==================== */
+
+/* 出口文本基础样式 */
+.exit-text {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* ==================== 可点击出口样式 ==================== */
+
+/* 可点击出口基础样式 */
+.exit-clickable {
+  cursor: pointer;
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+/* 鼠标悬停效果 */
+.exit-clickable:hover {
+  background-color: var(--primary);
+  color: var(--background) !important;
+  border-color: var(--secondary);
+  box-shadow: 0 0 15px var(--glow);
+  position: relative;
+  z-index: 5;
+  text-decoration: none;
+}
+
+/* 点击效果 */
+.exit-clickable:active {
+  background-color: var(--secondary);
+  border-color: var(--primary);
+}
+
+/* 悬停时显示箭头 */
+.exit-clickable:hover::after {
+  content: " ➤";
+  font-size: 0.9em;
+  margin-left: 4px;
+}
+
+/* 移除所有出口链接的悬停和点击效果样式 */

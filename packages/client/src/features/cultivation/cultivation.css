@@ -1,0 +1,1565 @@
+/**
+ * 修炼系统样式 - 水墨丹青风格
+ *
+ * 配色方案：
+ * - 主色：黑色 (#1a1a1a)、白色 (#f5f5dc)
+ * - 强调色：金色 (#d4af37)、赤金 (#c9a832)
+ * - 危险色：朱红 (#cc3333)
+ * - 成功色：翠绿 (#52c41a)
+ */
+
+/* ==================== 心魔劫系统样式 ==================== */
+.heart-demon-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.heart-demon-container {
+  width: 90%;
+  max-width: 700px;
+  background: linear-gradient(to bottom, #1a1a1a, #2a2a2a);
+  border: 3px solid #666;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+  position: relative;
+}
+
+.demon-scene {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.demon-scene.grayscale {
+  filter: grayscale(80%);
+}
+
+.demon-header {
+  margin-bottom: 20px;
+}
+
+.demon-title {
+  font-size: 32px;
+  color: #d4af37;
+  margin: 0 0 10px 0;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.demon-type {
+  display: inline-block;
+  background: rgba(212, 175, 55, 0.2);
+  color: #d4af37;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.demon-description-box {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #444;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.demon-description {
+  font-size: 18px;
+  color: #e0e0e0;
+  line-height: 1.8;
+  margin: 0;
+  text-align: center;
+}
+
+.countdown {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 80px;
+  height: 80px;
+}
+
+.countdown-circle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.countdown-circle svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.countdown-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: bold;
+  color: #888;
+}
+
+.countdown-warning .countdown-text {
+  color: #ff4444;
+  animation: pulse 1s infinite;
+}
+
+.choices-container {
+  margin-top: 20px;
+}
+
+.choices-title {
+  color: #d4af37;
+  font-size: 18px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.choice-button {
+  background: linear-gradient(to bottom, #3a3a3a, #2a2a2a);
+  border: 2px solid #555;
+  border-radius: 8px;
+  padding: 15px 20px;
+  color: #e0e0e0;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: left;
+}
+
+.choice-button:hover:not(:disabled) {
+  background: linear-gradient(to bottom, #4a4a4a, #3a3a3a);
+  border-color: #d4af37;
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.choice-button.choice-selected {
+  background: linear-gradient(to bottom, #d4af37, #c9a832);
+  border-color: #d4af37;
+  color: #1a1a1a;
+  font-weight: bold;
+}
+
+.choice-button.choice-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.choice-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 50%;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.choice-text {
+  flex: 1;
+  line-height: 1.6;
+}
+
+.difficulty-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: center;
+  color: #888;
+  font-size: 14px;
+}
+
+.difficulty-bars {
+  display: flex;
+  gap: 4px;
+}
+
+.difficulty-bar {
+  width: 20px;
+  height: 8px;
+  background: #333;
+  border-radius: 2px;
+  transition: background 0.3s ease;
+}
+
+.difficulty-bar.active {
+  background: #d4af37;
+}
+
+.heart-demon-result {
+  width: 90%;
+  max-width: 500px;
+  background: linear-gradient(to bottom, #f5f5dc, #faf9f0);
+  border: 3px solid #8b4513;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+  text-align: center;
+}
+
+.result-header {
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.result-header.result-success {
+  background: linear-gradient(to bottom, #52c41a, #4ab818);
+  color: white;
+}
+
+.result-header.result-failure {
+  background: linear-gradient(to bottom, #cc3333, #b32d2d);
+  color: white;
+}
+
+.result-header h2 {
+  margin: 0;
+  font-size: 28px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.result-content {
+  padding: 20px 0;
+}
+
+.result-message {
+  font-size: 18px;
+  color: #333;
+  margin: 20px 0;
+  line-height: 1.6;
+}
+
+.result-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.result-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+}
+
+.stat-label {
+  color: #666;
+  font-size: 16px;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1a1a1a;
+}
+
+.stat-value.text-success {
+  color: #52c41a;
+}
+
+.stat-value.text-failure {
+  color: #cc3333;
+}
+
+.result-close-button {
+  background: linear-gradient(to bottom, #d4af37, #c9a832);
+  border: 2px solid #b8972d;
+  border-radius: 8px;
+  padding: 12px 40px;
+  color: #1a1a1a;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.result-close-button:hover {
+  background: linear-gradient(to bottom, #e0bd45, #d4af37);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+}
+
+/* ==================== 天劫系统样式 ==================== */
+.tribulation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.tribulation-container {
+  width: 90%;
+  max-width: 900px;
+  background: linear-gradient(to bottom, #1a1a2e, #16213e);
+  border: 3px solid #0f3460;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+  position: relative;
+}
+
+.tribulation-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tribulation-header {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.tribulation-title {
+  font-size: 32px;
+  color: #ffd700;
+  margin: 0 0 10px 0;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+}
+
+.tribulation-counter {
+  font-size: 24px;
+  color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.strike-current {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+.strike-separator {
+  color: #888;
+}
+
+.strike-total {
+  font-size: 28px;
+  color: #aaa;
+}
+
+.strike-label {
+  margin-left: 5px;
+  font-size: 18px;
+  color: #888;
+}
+
+.tribulation-progress {
+  margin: 20px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.progress-bar-container {
+  position: relative;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #0f3460;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.tribulation-progress-fill {
+  background: linear-gradient(to right, #0f3460, #ffd700);
+  transition: width 0.5s ease;
+}
+
+.tribulation-hp {
+  margin: 20px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.hp-label {
+  color: #e0e0e0;
+  font-size: 16px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.hp-bar-container {
+  position: relative;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #333;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.hp-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(to right, #52c41a, #73d13d);
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.hp-bar-fill.hp-critical {
+  background: linear-gradient(to right, #cc3333, #ff4444);
+  animation: pulse 1s infinite;
+}
+
+.hp-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  z-index: 1;
+}
+
+.latest-strike-damage {
+  text-align: center;
+  margin: 15px 0;
+  padding: 15px;
+  background: rgba(255, 68, 68, 0.2);
+  border: 2px solid #ff4444;
+  border-radius: 8px;
+  position: relative;
+  z-index: 2;
+  animation: damageFlash 0.5s ease-out;
+}
+
+.damage-label {
+  display: block;
+  color: #e0e0e0;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.damage-value {
+  display: block;
+  color: #ff4444;
+  font-size: 32px;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 68, 68, 0.8);
+}
+
+@keyframes damageFlash {
+  0% {
+    transform: scale(1.1);
+    background: rgba(255, 68, 68, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    background: rgba(255, 68, 68, 0.2);
+  }
+}
+
+.tribulation-items {
+  margin: 20px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.items-label {
+  color: #e0e0e0;
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.item-button {
+  background: linear-gradient(to bottom, #2a2a3e, #1a1a2e);
+  border: 2px solid #0f3460;
+  border-radius: 8px;
+  padding: 15px 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.item-button:hover {
+  background: linear-gradient(to bottom, #3a3a4e, #2a2a3e);
+  border-color: #ffd700;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.item-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 8px;
+  background: rgba(255, 215, 0, 0.2);
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+.item-name {
+  display: block;
+  color: #e0e0e0;
+  font-size: 14px;
+}
+
+.tribulation-history {
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.history-title {
+  color: #e0e0e0;
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.history-list {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #0f3460;
+  border-radius: 8px;
+  padding: 10px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  margin-bottom: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.history-strike-num {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.history-damage {
+  color: #ff4444;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.tribulation-tips {
+  margin-top: 20px;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  position: relative;
+  z-index: 2;
+}
+
+.tribulation-result {
+  width: 90%;
+  max-width: 500px;
+  background: linear-gradient(to bottom, #f5f5dc, #faf9f0);
+  border: 3px solid #8b4513;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+  text-align: center;
+}
+
+.success-message {
+  color: #52c41a;
+}
+
+.failure-message {
+  color: #cc3333;
+}
+
+/* ==================== 动画效果 ==================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* ==================== 全局字体 ==================== */
+.cultivation-panel,
+.realm-display-widget,
+.meditation-view,
+.breakthrough-panel {
+  font-family: var(--font-family);
+}
+
+/* ==================== 修炼主面板 ==================== */
+.cultivation-panel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.cultivation-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 700px;
+  max-height: 85vh;
+  background: linear-gradient(to bottom, #f5f5dc, #faf9f0);
+  border: 4px solid #8b4513;
+  border-radius: 16px;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  z-index: 1000;
+  overflow: hidden;
+  animation: slideUp 0.4s ease-out;
+}
+
+/* 面板头部 */
+.cultivation-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, #8b4513, #a0522d);
+  border-bottom: 3px solid #654321;
+  color: #f5f5dc;
+}
+
+.panel-header-title {
+  flex: 1;
+}
+
+.panel-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.panel-subtitle {
+  margin-top: 4px;
+  font-size: 14px;
+  opacity: 0.9;
+  color: #d4af37;
+}
+
+.panel-close-button {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #f5f5dc;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  color: #f5f5dc;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel-close-button:hover {
+  background: rgba(204, 51, 51, 0.8);
+  transform: rotate(90deg);
+}
+
+/* Tab 切换栏 */
+.cultivation-panel-tabs {
+  display: flex;
+  background: linear-gradient(to bottom, #e5d7bc, #dac9a8);
+  border-bottom: 2px solid #8b4513;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 16px 24px;
+  border: none;
+  background: transparent;
+  color: #5a4a3a;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+}
+
+.tab-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #d4af37;
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.tab-button.active {
+  background: linear-gradient(to bottom, #f5f5dc, #fff);
+  color: #8b4513;
+}
+
+.tab-button.active::after {
+  transform: scaleX(1);
+}
+
+.tab-button:hover:not(.active) {
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.tab-icon {
+  font-size: 20px;
+}
+
+.tab-label {
+  font-size: 16px;
+}
+
+/* 内容区域 */
+.cultivation-panel-content {
+  padding: 24px;
+  max-height: calc(85vh - 180px);
+  overflow-y: auto;
+  background: linear-gradient(to bottom, #faf9f0, #f5f5dc);
+}
+
+/* 滚动条样式 */
+.cultivation-panel-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cultivation-panel-content::-webkit-scrollbar-track {
+  background: #e5d7bc;
+  border-radius: 4px;
+}
+
+.cultivation-panel-content::-webkit-scrollbar-thumb {
+  background: #8b4513;
+  border-radius: 4px;
+}
+
+.cultivation-panel-content::-webkit-scrollbar-thumb:hover {
+  background: #654321;
+}
+
+/* 面板底部装饰 */
+.cultivation-panel-footer {
+  height: 8px;
+  background: linear-gradient(135deg, #8b4513, #a0522d);
+  border-top: 2px solid #654321;
+}
+
+.panel-footer-decoration {
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    #d4af37,
+    #d4af37 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  opacity: 0.3;
+}
+
+/* ==================== 境界显示小挂件 ==================== */
+.realm-display-widget {
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #f5f5dc, #fff);
+  border: 3px solid #8b4513;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 200px;
+}
+
+.realm-display-widget:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  border-color: #d4af37;
+}
+
+.realm-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.realm-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #8b4513;
+}
+
+.realm-level {
+  font-size: 14px;
+  color: #a0522d;
+}
+
+.realm-progress {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.realm-progress-bar {
+  flex: 1;
+}
+
+.realm-progress-text {
+  font-size: 12px;
+  color: #8b4513;
+  font-weight: bold;
+  min-width: 40px;
+  text-align: right;
+}
+
+.meditation-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 4px 8px;
+  background: rgba(212, 175, 55, 0.1);
+  border-radius: 4px;
+}
+
+.meditation-dot {
+  width: 8px;
+  height: 8px;
+  background: #d4af37;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+.meditation-text {
+  font-size: 12px;
+  color: #8b4513;
+}
+
+.realm-display-hint {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #999;
+  text-align: center;
+}
+
+/* ==================== 修为进度条 ==================== */
+.cultivation-progress-bar {
+  width: 100%;
+}
+
+.progress-bar-container {
+  position: relative;
+}
+
+.progress-bar-background {
+  height: 24px;
+  background: linear-gradient(to bottom, #dac9a8, #c9b898);
+  border: 2px solid #8b4513;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, #d4af37, #e5c04a, #d4af37);
+  border-radius: 10px;
+  position: relative;
+  transition: width 0.5s ease-out;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+}
+
+.progress-bar-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+.progress-bar-text {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #8b4513;
+}
+
+.progress-value {
+  font-weight: bold;
+}
+
+.progress-percentage {
+  color: #d4af37;
+  font-weight: bold;
+}
+
+/* ==================== 打坐界面 ==================== */
+.meditation-view {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.meditation-realm-info {
+  text-align: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #f5f5dc, #fff);
+  border: 2px solid #d4af37;
+  border-radius: 8px;
+}
+
+.meditation-realm-title {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  color: #8b4513;
+}
+
+.meditation-stability {
+  font-size: 14px;
+  color: #a0522d;
+}
+
+/* 角色动画区域 */
+.character-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  position: relative;
+}
+
+.character-pose {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.character-icon {
+  font-size: 64px;
+  z-index: 2;
+  position: relative;
+}
+
+.character-pose.meditating .character-icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* 打坐光环效果 */
+.meditation-aura {
+  position: absolute;
+  border: 2px solid #d4af37;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.meditation-aura.aura-1 {
+  width: 100px;
+  height: 100px;
+  animation: ripple 2s infinite;
+}
+
+.meditation-aura.aura-2 {
+  width: 100px;
+  height: 100px;
+  animation: ripple 2s 0.7s infinite;
+}
+
+.meditation-aura.aura-3 {
+  width: 100px;
+  height: 100px;
+  animation: ripple 2s 1.4s infinite;
+}
+
+/* 修为显示 */
+.exp-display {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid #d4af37;
+  border-radius: 8px;
+}
+
+.exp-label {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #8b4513;
+  text-align: center;
+}
+
+/* 修为增长特效 */
+.exp-gain-effect {
+  text-align: center;
+  padding: 12px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(229, 192, 74, 0.2));
+  border: 2px solid #d4af37;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.exp-gain-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #d4af37;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+  animation: pulse 1s infinite;
+}
+
+.exp-gain-unit {
+  font-size: 16px;
+  color: #a0522d;
+}
+
+/* 打坐时长 */
+.meditation-duration {
+  text-align: center;
+  font-size: 14px;
+  color: #8b4513;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+}
+
+/* 打坐控制按钮 */
+.meditation-controls {
+  display: flex;
+  justify-content: center;
+  padding: 16px 0;
+}
+
+.meditation-button {
+  padding: 14px 48px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 3px solid #8b4513;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.meditation-button.start-button {
+  background: linear-gradient(to bottom, #d4af37, #c9a832);
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.meditation-button.start-button:hover:not(:disabled) {
+  background: linear-gradient(to bottom, #e5c04a, #d4af37);
+  box-shadow: 0 6px 12px rgba(212, 175, 55, 0.5);
+  transform: translateY(-2px);
+}
+
+.meditation-button.stop-button {
+  background: linear-gradient(to bottom, #cc3333, #aa2222);
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.meditation-button.stop-button:hover {
+  background: linear-gradient(to bottom, #dd4444, #cc3333);
+  box-shadow: 0 6px 12px rgba(204, 51, 51, 0.5);
+  transform: translateY(-2px);
+}
+
+.meditation-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 提示信息 */
+.meditation-hints {
+  padding: 12px;
+  border-radius: 6px;
+}
+
+/* ==================== 突破面板 ==================== */
+.breakthrough-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.breakthrough-header {
+  text-align: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #f5f5dc, #fff);
+  border: 2px solid #d4af37;
+  border-radius: 8px;
+}
+
+.breakthrough-title {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  color: #8b4513;
+}
+
+.current-realm,
+.next-realm {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+.current-realm {
+  color: #a0522d;
+}
+
+.next-realm {
+  color: #d4af37;
+  font-weight: bold;
+}
+
+/* 突破条件 */
+.breakthrough-conditions {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid #8b4513;
+  border-radius: 8px;
+}
+
+.conditions-title {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  color: #8b4513;
+  text-align: center;
+}
+
+.conditions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.condition-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+
+.condition-item.met {
+  border-color: #52c41a;
+  background: rgba(82, 196, 26, 0.1);
+}
+
+.condition-item.unmet {
+  border-color: #cc3333;
+  background: rgba(204, 51, 51, 0.05);
+}
+
+.condition-icon {
+  font-size: 20px;
+  width: 24px;
+  text-align: center;
+}
+
+.condition-label {
+  flex: 1;
+  font-size: 14px;
+  font-weight: bold;
+  color: #8b4513;
+}
+
+.condition-detail {
+  font-size: 12px;
+  color: #a0522d;
+}
+
+/* 成功率 */
+.success-rate-section {
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f5dc, #fff);
+  border: 3px solid #d4af37;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.success-rate-label {
+  font-size: 16px;
+  color: #8b4513;
+  margin-bottom: 12px;
+}
+
+.success-rate-value {
+  font-size: 36px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.success-rate-value.high {
+  color: #52c41a;
+}
+
+.success-rate-value.medium {
+  color: #d4af37;
+}
+
+.success-rate-value.low {
+  color: #cc3333;
+}
+
+.success-rate-warning {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #cc3333;
+}
+
+/* 辅助道具 */
+.breakthrough-items {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid #8b4513;
+  border-radius: 8px;
+}
+
+.items-title {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #8b4513;
+}
+
+.items-placeholder {
+  padding: 20px;
+  text-align: center;
+  color: #999;
+  font-size: 13px;
+}
+
+/* 突破按钮 */
+.breakthrough-action {
+  display: flex;
+  justify-content: center;
+  padding: 16px 0;
+}
+
+.breakthrough-button {
+  padding: 16px 64px;
+  font-size: 20px;
+  font-weight: bold;
+  border: 3px solid #8b4513;
+  border-radius: 8px;
+  background: linear-gradient(to bottom, #d4af37, #c9a832);
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.breakthrough-button:hover:not(:disabled) {
+  background: linear-gradient(to bottom, #e5c04a, #d4af37);
+  box-shadow: 0 6px 12px rgba(212, 175, 55, 0.5);
+  transform: translateY(-2px);
+}
+
+.breakthrough-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.breakthrough-button.in-progress {
+  background: linear-gradient(to bottom, #999, #777);
+  animation: pulse 1.5s infinite;
+}
+
+/* 突破进度 */
+.breakthrough-progress-section {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid #d4af37;
+  border-radius: 8px;
+}
+
+.breakthrough-progress-label {
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #8b4513;
+  text-align: center;
+}
+
+.breakthrough-progress-bar {
+  height: 32px;
+  background: linear-gradient(to bottom, #dac9a8, #c9b898);
+  border: 2px solid #8b4513;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.breakthrough-progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #d4af37, #e5c04a, #d4af37);
+  border-radius: 14px;
+  position: relative;
+  transition: width 0.3s ease-out;
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.8);
+}
+
+.breakthrough-progress-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+.breakthrough-progress-text {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #d4af37;
+}
+
+/* 突破提示 */
+.breakthrough-hints {
+  padding: 12px;
+  border-radius: 6px;
+}
+
+/* ==================== 通用提示样式 ==================== */
+.hint {
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.hint-success {
+  background: rgba(82, 196, 26, 0.1);
+  border: 2px solid #52c41a;
+  color: #52c41a;
+}
+
+.hint-info {
+  background: rgba(24, 144, 255, 0.1);
+  border: 2px solid #1890ff;
+  color: #1890ff;
+}
+
+.hint-warning {
+  background: rgba(250, 173, 20, 0.1);
+  border: 2px solid #faad14;
+  color: #d48806;
+}
+
+.hint-progress {
+  background: rgba(212, 175, 55, 0.1);
+  border: 2px solid #d4af37;
+  color: #8b4513;
+}
+
+/* ==================== 动画效果 ==================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    width: 140px;
+    height: 140px;
+    opacity: 0;
+  }
+}
+
+/* ==================== 响应式设计 ==================== */
+@media (max-width: 768px) {
+  .cultivation-panel {
+    width: 95%;
+    max-width: none;
+  }
+
+  .panel-title {
+    font-size: 20px;
+  }
+
+  .tab-button {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .cultivation-panel-content {
+    padding: 16px;
+  }
+
+  .meditation-button,
+  .breakthrough-button {
+    padding: 12px 32px;
+    font-size: 16px;
+  }
+
+  .character-icon {
+    font-size: 48px;
+  }
+
+  .exp-gain-value {
+    font-size: 20px;
+  }
+
+  .success-rate-value {
+    font-size: 28px;
+  }
+}

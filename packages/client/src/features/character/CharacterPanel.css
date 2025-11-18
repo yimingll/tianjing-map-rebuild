@@ -1,0 +1,334 @@
+/**
+ * 角色面板样式
+ */
+
+.character-panel {
+  display: flex;
+  gap: 1.5rem;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  color: #3d2817;
+}
+
+/* 无数据提示 */
+.no-data-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 1rem;
+}
+
+.no-data-icon {
+  font-size: 4rem;
+  opacity: 0.5;
+}
+
+.no-data-text {
+  font-size: 1.2rem;
+  color: rgba(139, 69, 19, 0.6);
+  font-weight: 500;
+}
+
+/* 左右分栏 */
+.character-left,
+.character-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* 滚动条样式 */
+.character-left::-webkit-scrollbar,
+.character-right::-webkit-scrollbar {
+  width: 6px;
+}
+
+.character-left::-webkit-scrollbar-track,
+.character-right::-webkit-scrollbar-track {
+  background: rgba(139, 69, 19, 0.1);
+  border-radius: 3px;
+}
+
+.character-left::-webkit-scrollbar-thumb,
+.character-right::-webkit-scrollbar-thumb {
+  background: rgba(139, 69, 19, 0.4);
+  border-radius: 3px;
+}
+
+.character-left::-webkit-scrollbar-thumb:hover,
+.character-right::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 69, 19, 0.6);
+}
+
+/* 信息区块 */
+.info-section {
+  background: rgba(139, 69, 19, 0.08);
+  border: 1px solid rgba(139, 69, 19, 0.25);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(139, 69, 19, 0.9);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(139, 69, 19, 0.2);
+}
+
+.title-icon {
+  font-size: 1.2rem;
+}
+
+.available-points {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: #d4af37;
+  background: rgba(212, 175, 55, 0.15);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* 境界区域 */
+.realm-section {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(139, 69, 19, 0.08));
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.realm-display {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.realm-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #d4af37;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.25rem;
+}
+
+.realm-layer {
+  font-size: 1rem;
+  color: rgba(139, 69, 19, 0.7);
+  font-weight: 500;
+}
+
+/* 经验条 */
+.experience-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.exp-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: rgba(139, 69, 19, 0.8);
+}
+
+.exp-value {
+  font-weight: 600;
+  color: #d4af37;
+}
+
+.exp-bar-container {
+  position: relative;
+}
+
+.exp-bar-bg {
+  height: 20px;
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.exp-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #d4af37, #f0d98d, #d4af37);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  transition: width 0.3s ease;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* 资源区域 */
+.resources-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.resource-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.resource-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.resource-label {
+  font-weight: 600;
+  color: rgba(139, 69, 19, 0.8);
+}
+
+.resource-value {
+  font-weight: 500;
+  color: rgba(139, 69, 19, 0.7);
+}
+
+.resource-bar-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.resource-bar {
+  flex: 1;
+  height: 16px;
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.resource-bar-fill {
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.3s ease;
+}
+
+.hp-fill {
+  background: linear-gradient(90deg, #dc3545, #ff6b6b);
+  box-shadow: 0 0 8px rgba(220, 53, 69, 0.4);
+}
+
+.mp-fill {
+  background: linear-gradient(90deg, #4169e1, #6495ed);
+  box-shadow: 0 0 8px rgba(65, 105, 225, 0.4);
+}
+
+.resource-percentage {
+  font-size: 0.75rem;
+  color: rgba(139, 69, 19, 0.7);
+  font-weight: 600;
+  min-width: 35px;
+  text-align: right;
+}
+
+/* 灵根区域 */
+.spirit-roots-section {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(139, 69, 19, 0.08));
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+.spirit-roots-display {
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spirit-roots-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.spirit-root-tag {
+  padding: 0.4rem 0.8rem;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.15));
+  border: 1px solid rgba(76, 175, 80, 0.4);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2e7d32;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.no-spirit-roots {
+  color: rgba(139, 69, 19, 0.5);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* 属性网格 */
+.attributes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.attr-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.8rem;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(139, 69, 19, 0.2);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.attr-item:hover {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(139, 69, 19, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.attr-label {
+  font-size: 0.85rem;
+  color: rgba(139, 69, 19, 0.7);
+  font-weight: 500;
+}
+
+.attr-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #3d2817;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .character-panel {
+    flex-direction: column;
+  }
+
+  .character-left,
+  .character-right {
+    max-height: none;
+  }
+
+  .attributes-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,373 @@
+/**
+ * 背包面板样式
+ * 水墨丹青主题
+ */
+
+/* 背包切换按钮 */
+.inventory-toggle-btn {
+  position: fixed;
+  top: 180px;
+  right: 20px;
+  padding: 12px 24px;
+  background: rgba(139, 69, 19, 0.9);
+  border: 2px solid rgba(139, 69, 19, 1);
+  border-radius: 8px;
+  color: #f5e6d3;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.inventory-toggle-btn:hover {
+  background: rgba(160, 82, 45, 0.95);
+  border-color: #d4a574;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.inventory-toggle-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.inventory-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  max-width: 90vw;
+  height: 700px;
+  max-height: 85vh;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(18, 18, 18, 0.95), rgba(28, 28, 28, 0.95));
+  border: 2px solid rgba(139, 69, 19, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  font-family: var(--font-family);
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.inventory-panel.drag-over {
+  border-color: rgba(144, 215, 255, 0.8);
+  box-shadow: 0 8px 32px rgba(144, 215, 255, 0.3);
+}
+
+.inventory-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid rgba(139, 69, 19, 0.4);
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.panel-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #d4af37;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+/* 关闭按钮 */
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  background: rgba(139, 69, 19, 0.3);
+  border: 1px solid rgba(139, 69, 19, 0.6);
+  border-radius: 6px;
+  color: #f5e6d3;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.close-btn:hover {
+  background: rgba(139, 69, 19, 0.5);
+  border-color: rgba(139, 69, 19, 0.9);
+  color: #ff6b6b;
+  transform: scale(1.1);
+}
+
+.close-btn:active {
+  transform: scale(0.95);
+}
+
+.inventory-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 16px;
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid rgba(139, 69, 19, 0.4);
+  border-radius: 6px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.stat-label {
+  color: #c9b89a;
+}
+
+.stat-value {
+  color: #90ee90;
+  font-weight: 600;
+}
+
+.stat-divider {
+  color: rgba(139, 69, 19, 0.6);
+  font-weight: 300;
+}
+
+/* 搜索框容器 */
+.search-container {
+  position: relative;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 36px 10px 12px;
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid rgba(139, 69, 19, 0.4);
+  border-radius: 6px;
+  color: #c9b89a;
+  font-size: 14px;
+  font-family: var(--font-family);
+  transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: rgba(201, 184, 154, 0.5);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: rgba(139, 69, 19, 0.8);
+  background: rgba(20, 20, 20, 0.8);
+  box-shadow: 0 0 10px rgba(139, 69, 19, 0.3);
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: rgba(139, 69, 19, 0.3);
+  border: 1px solid rgba(139, 69, 19, 0.6);
+  border-radius: 4px;
+  color: #c9b89a;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.clear-search-btn:hover {
+  background: rgba(139, 69, 19, 0.5);
+  border-color: rgba(139, 69, 19, 0.9);
+  color: #ff6b6b;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.clear-search-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.filter-btn {
+  flex: 1;
+  padding: 8px 16px;
+  background: rgba(38, 38, 38, 0.8);
+  border: 1px solid rgba(139, 69, 19, 0.4);
+  border-radius: 6px;
+  color: #c9b89a;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-family);
+}
+
+.filter-btn:hover {
+  background: rgba(139, 69, 19, 0.3);
+  border-color: rgba(139, 69, 19, 0.8);
+  color: #fff;
+}
+
+.filter-btn.active {
+  background: rgba(139, 69, 19, 0.5);
+  border-color: rgba(139, 69, 19, 0.9);
+  color: #d4af37;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.inventory-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 12px;
+  padding: 16px;
+  background: rgba(20, 20, 20, 0.4);
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  border-radius: 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* 自定义滚动条 */
+.inventory-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.inventory-grid::-webkit-scrollbar-track {
+  background: rgba(20, 20, 20, 0.6);
+  border-radius: 4px;
+}
+
+.inventory-grid::-webkit-scrollbar-thumb {
+  background: rgba(139, 69, 19, 0.6);
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.inventory-grid::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 69, 19, 0.8);
+}
+
+.empty-inventory {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  color: rgba(201, 184, 154, 0.5);
+}
+
+.empty-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.drop-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(144, 215, 255, 0.1);
+  border: 4px dashed rgba(144, 215, 255, 0.6);
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.drop-hint {
+  padding: 16px 32px;
+  background: rgba(26, 26, 26, 0.95);
+  border: 2px solid rgba(144, 215, 255, 0.8);
+  border-radius: 8px;
+  color: #90d7ff;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(144, 215, 255, 0.3);
+}
+
+/* 响应式调整 */
+@media (max-width: 1024px) {
+  .inventory-grid {
+    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .filter-buttons {
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .inventory-panel {
+    padding: 12px;
+  }
+
+  .panel-title {
+    font-size: 20px;
+  }
+
+  .inventory-stats {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .inventory-grid {
+    grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+    gap: 6px;
+    padding: 8px;
+  }
+}
+
+/* 动画 */
+.inventory-panel {
+  animation: panelSlideIn 0.3s ease-out;
+}
+
+@keyframes panelSlideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% - 20px));
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}

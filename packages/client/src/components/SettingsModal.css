@@ -1,0 +1,296 @@
+/**
+ * 设置模态框样式 - 组件特定样式
+ * 通用布局和装饰由 ModalTemplate 提供
+ */
+
+/* ==================== 设置内容区布局 ==================== */
+.setting-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--background);
+  padding: 15px;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  box-shadow:
+    0 0 10px var(--glow),
+    inset 0 0 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.setting-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.label-icon {
+  font-size: 18px;
+  filter: drop-shadow(0 0 4px var(--glow));
+}
+
+.label-text {
+  flex: 1;
+  letter-spacing: 0.5px;
+}
+
+.label-value {
+  font-size: 14px;
+  color: var(--primary);
+  font-weight: bold;
+  background: var(--hover);
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 2px solid var(--border);
+  min-width: 70px;
+  text-align: center;
+  text-shadow: 0 0 5px var(--glow);
+}
+
+/* ==================== 滑块控制 ==================== */
+.setting-control {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--background);
+  outline: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 2px solid var(--border);
+}
+
+.slider:hover {
+  border-color: var(--primary);
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 0 10px var(--glow), 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 15px var(--glow), 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 0 10px var(--glow), 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease;
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 15px var(--glow), 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.slider-marks {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+  font-size: 12px;
+  color: var(--textDim);
+}
+
+/* ==================== 预览区域 ==================== */
+.setting-preview {
+  padding: 12px 16px;
+  background: var(--background);
+  border: 1px solid var(--primary);
+  color: var(--text);
+  text-align: center;
+  font-weight: 500;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease;
+}
+
+.setting-hint {
+  font-size: 12px;
+  color: var(--textDim);
+  opacity: 0.7;
+  padding-left: 5px;
+}
+
+/* ==================== 分隔线 ==================== */
+.setting-divider {
+  display: none;
+}
+
+/* ==================== 预设按钮 ==================== */
+.preset-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.preset-button {
+  background: var(--background);
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  color: var(--primary);
+  padding: 10px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 0 5px var(--glow);
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 10px var(--glow),
+    inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.preset-button > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 按钮内部光效 */
+.preset-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, var(--glow), transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.preset-button:hover::before {
+  width: 300%;
+  height: 300%;
+}
+
+.preset-button:hover {
+  background: var(--primary);
+  color: var(--background);
+  box-shadow:
+    0 0 20px var(--glow),
+    0 0 40px var(--glow),
+    inset 0 0 10px rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px) scale(1.05);
+  border-color: var(--secondary);
+}
+
+.preset-button:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow:
+    0 0 10px var(--glow),
+    inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ==================== 底部按钮样式 ==================== */
+.reset-button,
+.confirm-button {
+  background: var(--background);
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  color: var(--primary);
+  padding: 12px 28px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 0 5px var(--glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 10px var(--glow),
+    inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.reset-button > *,
+.confirm-button > * {
+  position: relative;
+  z-index: 1;
+}
+
+.button-icon {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* 按钮内部光效 */
+.reset-button::before,
+.confirm-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, var(--glow), transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.reset-button:hover::before,
+.confirm-button:hover::before {
+  width: 300%;
+  height: 300%;
+}
+
+.reset-button:hover,
+.confirm-button:hover {
+  background: var(--primary);
+  color: var(--background);
+  box-shadow:
+    0 0 20px var(--glow),
+    0 0 40px var(--glow),
+    inset 0 0 10px rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px) scale(1.05);
+  border-color: var(--secondary);
+}
+
+.reset-button:active,
+.confirm-button:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow:
+    0 0 10px var(--glow),
+    inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ==================== 响应式设计 ==================== */
+@media (max-width: 768px) {
+  .preset-buttons {
+    grid-template-columns: 1fr;
+  }
+}

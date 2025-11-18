@@ -1,0 +1,147 @@
+/* qianduan/src/features/equipment/EquipmentTooltip.css */
+
+/* Tooltip主容器 */
+.equipment-tooltip {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+  min-width: 240px;
+  max-width: 320px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border: 2px solid #4a5568;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  pointer-events: none;
+  font-family: var(--font-family);
+  overflow: hidden;
+}
+
+/* 防止tooltip超出屏幕边界 */
+.equipment-slot:nth-child(-n+2) .equipment-tooltip {
+  left: 0;
+  transform: none;
+}
+
+.equipment-slot:nth-last-child(-n+2) .equipment-tooltip {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+
+/* Tooltip头部 */
+.tooltip-header {
+  padding: 12px 16px;
+  border-bottom: 2px solid;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.tooltip-header h4 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.quality-text {
+  font-size: 12px;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Tooltip主体 */
+.tooltip-body {
+  padding: 12px 16px;
+}
+
+/* 属性列表 */
+.attributes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.attribute-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  font-size: 13px;
+  color: #e0e0e0;
+}
+
+.attribute-line span:first-child {
+  color: #9ca3af;
+}
+
+.attribute-line .value {
+  color: #10b981;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Tooltip底部 */
+.tooltip-footer {
+  padding-top: 8px;
+  border-top: 1px solid #4a5568;
+}
+
+.hint {
+  margin: 0;
+  font-size: 11px;
+  color: #6b7280;
+  text-align: center;
+  font-style: italic;
+}
+
+/* 三角箭头 */
+.equipment-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #4a5568;
+}
+
+/* 调整左侧边缘tooltip的箭头 */
+.equipment-slot:nth-child(-n+2) .equipment-tooltip::before {
+  left: 20px;
+  transform: none;
+}
+
+/* 调整右侧边缘tooltip的箭头 */
+.equipment-slot:nth-last-child(-n+2) .equipment-tooltip::before {
+  left: auto;
+  right: 20px;
+  transform: none;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .equipment-tooltip {
+    min-width: 200px;
+    max-width: 280px;
+    font-size: 12px;
+  }
+
+  .tooltip-header h4 {
+    font-size: 14px;
+  }
+
+  .attribute-line {
+    font-size: 12px;
+  }
+
+  .attribute-line .value {
+    font-size: 13px;
+  }
+}

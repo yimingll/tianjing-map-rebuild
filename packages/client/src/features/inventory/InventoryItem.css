@@ -1,0 +1,279 @@
+/**
+ * 背包物品样式
+ * 水墨丹青主题
+ */
+
+.inventory-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  padding: 8px;
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(38, 38, 38, 0.9));
+  border: 2px solid rgba(139, 69, 19, 0.4);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  overflow: visible;
+}
+
+.inventory-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(139, 69, 19, 0.4);
+  border-color: rgba(139, 69, 19, 0.8);
+}
+
+.inventory-item.dragging {
+  opacity: 0.5;
+  cursor: grabbing;
+}
+
+/* 品质边框颜色 */
+.inventory-item.quality-common {
+  border-color: rgba(139, 69, 19, 0.4);
+}
+
+.inventory-item.quality-uncommon {
+  border-color: rgba(144, 215, 255, 0.6);
+  box-shadow: 0 0 8px rgba(144, 215, 255, 0.3);
+}
+
+.inventory-item.quality-rare {
+  border-color: rgba(177, 156, 217, 0.6);
+  box-shadow: 0 0 8px rgba(177, 156, 217, 0.3);
+}
+
+.inventory-item.quality-epic {
+  border-color: rgba(255, 102, 204, 0.6);
+  box-shadow: 0 0 12px rgba(255, 102, 204, 0.4);
+}
+
+.inventory-item.quality-legendary {
+  border-color: rgba(255, 170, 0, 0.6);
+  box-shadow: 0 0 16px rgba(255, 170, 0, 0.4);
+  animation: legendaryGlow 2s ease-in-out infinite;
+}
+
+@keyframes legendaryGlow {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(255, 170, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(255, 170, 0, 0.6);
+  }
+}
+
+.item-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.item-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.item-icon-text {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.item-info {
+  text-align: center;
+  width: 100%;
+}
+
+.item-name {
+  font-size: 12px;
+  color: #c9b89a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--font-family);
+}
+
+.item-quantity {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.quality-indicator {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.quality-common .quality-indicator {
+  background: #d0d0d0;
+}
+
+.quality-uncommon .quality-indicator {
+  background: #90d7ff;
+}
+
+.quality-rare .quality-indicator {
+  background: #b19cd9;
+}
+
+.quality-epic .quality-indicator {
+  background: #ff66cc;
+}
+
+.quality-legendary .quality-indicator {
+  background: #ffaa00;
+}
+
+/* 右键菜单 */
+.context-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background: rgba(26, 26, 26, 0.98);
+  border: 2px solid rgba(139, 69, 19, 0.6);
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  min-width: 120px;
+  margin-top: 4px;
+}
+
+.menu-item {
+  padding: 8px 12px;
+  background: rgba(38, 38, 38, 0.8);
+  border: 1px solid rgba(139, 69, 19, 0.4);
+  border-radius: 4px;
+  color: #c9b89a;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-family);
+}
+
+.menu-item:hover {
+  background: rgba(139, 69, 19, 0.3);
+  border-color: rgba(139, 69, 19, 0.8);
+  color: #fff;
+}
+
+.menu-item.equip:hover {
+  color: #90d7ff;
+}
+
+.menu-item.use:hover {
+  color: #90ee90;
+}
+
+.menu-item.drop:hover {
+  color: #ff6b6b;
+}
+
+/* Tooltip */
+.item-tooltip {
+  position: absolute;
+  top: 0;
+  left: 105%;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.simple-tooltip {
+  padding: 12px;
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.98), rgba(38, 38, 38, 0.98));
+  border: 2px solid rgba(139, 69, 19, 0.6);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  min-width: 200px;
+  max-width: 300px;
+  font-family: var(--font-family);
+}
+
+.simple-tooltip h4 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(139, 69, 19, 0.3);
+}
+
+.simple-tooltip .description {
+  margin: 8px 0;
+  font-size: 13px;
+  color: #c9b89a;
+  line-height: 1.5;
+}
+
+.simple-tooltip .requirement {
+  margin: 8px 0 0 0;
+  font-size: 12px;
+  color: #ff6b6b;
+}
+
+/* 品质文字颜色 */
+.quality-common {
+  color: #d0d0d0;
+}
+
+.quality-uncommon {
+  color: #90d7ff;
+}
+
+.quality-rare {
+  color: #b19cd9;
+}
+
+.quality-epic {
+  color: #ff66cc;
+}
+
+.quality-legendary {
+  color: #ffaa00;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .inventory-item {
+    width: 64px;
+    height: 64px;
+  }
+
+  .item-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .item-icon-text {
+    font-size: 24px;
+  }
+
+  .item-name {
+    font-size: 10px;
+  }
+
+  .item-tooltip {
+    left: auto;
+    right: 105%;
+  }
+}

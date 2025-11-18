@@ -1,0 +1,23 @@
+{
+  "totalRooms": 140,
+  "connectedComponents": 1,
+  "isFullyConnected": true,
+  "brokenExits": 0,
+  "unidirectionalConnections": 0,
+  "roomsWithNoExits": 0,
+  "components": [
+    {
+      "id": 1,
+      "size": 140,
+      "rooms": [
+        "tj_gate_south_outside",
+        "tj_gate_south_passage",
+        "tj_road_south_01",
+        "tj_gate_south_east_plaza",
+        "tj_gate_south_west_plaza"
+      ]
+    }
+  ],
+  "brokenExitsList": [],
+  "unidirectionalList": []
+}

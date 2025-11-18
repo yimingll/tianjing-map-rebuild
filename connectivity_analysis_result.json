@@ -1,0 +1,162 @@
+{
+  "total_rooms": 140,
+  "isolated_rooms": [],
+  "connected_components_count": 1,
+  "missing_reverse_connections": [
+    {
+      "from": "tj_palace_square",
+      "to": "tj_ministry_plaza",
+      "type": "no_reverse",
+      "from_exit": {
+        "direction": "northeast",
+        "description": "东北是六部广场"
+      }
+    },
+    {
+      "from": "tj_gate_north_inside",
+      "to": "tj_palace_square",
+      "type": "no_reverse",
+      "from_exit": {
+        "direction": "south",
+        "description": "南面通往宫前广场"
+      }
+    }
+  ],
+  "top_hub_rooms": [
+    [
+      "tj_street_west_main",
+      9
+    ],
+    [
+      "tj_slum_main_alley",
+      9
+    ],
+    [
+      "tj_street_east_mansion",
+      7
+    ],
+    [
+      "tj_ministry_plaza",
+      7
+    ],
+    [
+      "tj_street_royal_mid_01",
+      6
+    ],
+    [
+      "tj_street_royal_north_01",
+      6
+    ],
+    [
+      "tj_palace_square",
+      5
+    ],
+    [
+      "tj_street_royal_south_01",
+      5
+    ],
+    [
+      "tj_bai_mansion_front_yard",
+      5
+    ],
+    [
+      "tj_gate_south_outside",
+      4
+    ]
+  ],
+  "room_types": {
+    "entrance": 9,
+    "passage": 4,
+    "plaza": 8,
+    "wall": 8,
+    "station": 1,
+    "courtyard": 6,
+    "throne_room": 1,
+    "hall": 3,
+    "library": 2,
+    "armory": 2,
+    "garden": 4,
+    "palace": 2,
+    "classroom": 1,
+    "dormitory": 3,
+    "tower": 2,
+    "street": 7,
+    "shop": 6,
+    "workshop": 3,
+    "tavern": 1,
+    "tavern_room": 1,
+    "auction_house": 1,
+    "vip_room": 1,
+    "teahouse": 2,
+    "bookstore": 1,
+    "bank": 1,
+    "study": 1,
+    "bedroom": 1,
+    "training": 1,
+    "secret": 1,
+    "kitchen": 1,
+    "storage": 1,
+    "shrine": 1,
+    "mansion_gate": 1,
+    "market_entrance": 1,
+    "market": 4,
+    "fish_market": 1,
+    "vegetable_market": 1,
+    "cloth_market": 1,
+    "clinic": 2,
+    "temple": 1,
+    "workshop_street": 1,
+    "food_market": 1,
+    "residential": 1,
+    "alley": 3,
+    "charity_clinic": 1,
+    "restaurant": 1,
+    "pawn_shop": 1,
+    "well": 1,
+    "government_office": 6,
+    "prison": 1,
+    "dungeon": 1,
+    "military_gate": 1,
+    "training_ground": 1,
+    "warehouse": 2,
+    "barracks": 1,
+    "inn": 1,
+    "corner_tower": 4,
+    "orphanage": 1,
+    "charity": 1,
+    "shacks": 1,
+    "gambling": 1,
+    "opium_den": 1,
+    "black_market": 1,
+    "hideout": 1,
+    "arena": 1,
+    "road": 4,
+    "farmland": 1
+  },
+  "district_stats": {
+    "南门区": 8,
+    "皇城区": 25,
+    "商业区": 19,
+    "东城区": 21,
+    "西城区": 14,
+    "官府区": 13,
+    "北门区": 8,
+    "东门区": 4,
+    "西门区": 4,
+    "城墙区": 8,
+    "贫民区": 11,
+    "城郊区": 5
+  },
+  "direction_stats": {
+    "north": 51,
+    "south": 52,
+    "east": 58,
+    "west": 58,
+    "up": 8,
+    "down": 8,
+    "northeast": 11,
+    "southeast": 13,
+    "northwest": 13,
+    "southwest": 10
+  }
+}

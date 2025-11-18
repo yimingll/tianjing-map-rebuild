@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sarasa Term SC Nerd 字体测试</title>
+  <style>
+    @font-face {
+      font-family: 'Sarasa Term SC Nerd';
+      src: url('/fonts/SarasaTermSCNerd-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Sarasa Term SC Nerd';
+      src: url('/fonts/SarasaTermSCNerd-Bold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Sarasa Term SC Nerd', monospace;
+      background: #1a1a1a;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #4CAF50;
+      border-bottom: 2px solid #4CAF50;
+      padding-bottom: 10px;
+    }
+
+    .test-section {
+      margin: 30px 0;
+      padding: 20px;
+      background: #2a2a2a;
+      border-radius: 8px;
+      border: 1px solid #3a3a3a;
+    }
+
+    .test-section h2 {
+      color: #64B5F6;
+      margin-top: 0;
+    }
+
+    .font-check {
+      padding: 15px;
+      background: #1e1e1e;
+      border-radius: 4px;
+      margin: 10px 0;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .status.loaded {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .status.loading {
+      background: #FFC107;
+      color: black;
+    }
+
+    .status.error {
+      background: #F44336;
+      color: white;
+    }
+
+    pre {
+      background: #1e1e1e;
+      padding: 15px;
+      border-radius: 4px;
+      overflow-x: auto;
+      border: 1px solid #3a3a3a;
+    }
+
+    .weight-400 {
+      font-weight: 400;
+    }
+
+    .weight-700 {
+      font-weight: 700;
+    }
+
+    .ascii-art {
+      white-space: pre;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 Sarasa Term SC Nerd 字体测试</h1>
+
+    <!-- 字体加载状态 -->
+    <div class="test-section">
+      <h2>📊 字体加载状态</h2>
+      <div class="font-check">
+        <strong>Sarasa Term SC Nerd Regular:</strong>
+        <span class="status loading" id="status-regular">检测中...</span>
+      </div>
+      <div class="font-check">
+        <strong>Sarasa Term SC Nerd Bold:</strong>
+        <span class="status loading" id="status-bold">检测中...</span>
+      </div>
+      <button onclick="checkFonts()">🔄 重新检测</button>
+    </div>
+
+    <!-- 字体样式测试 -->
+    <div class="test-section">
+      <h2>📝 字体样式测试</h2>
+
+      <div class="font-check">
+        <h3>常规字重 (400)</h3>
+        <p class="weight-400">
+          The quick brown fox jumps over the lazy dog. 0123456789<br>
+          这是一段中文测试文本，包含各种标点符号：，。！？、；：""''《》【】
+        </p>
+      </div>
+
+      <div class="font-check">
+        <h3>粗体字重 (700)</h3>
+        <p class="weight-700">
+          The quick brown fox jumps over the lazy dog. 0123456789<br>
+          这是一段中文测试文本，包含各种标点符号：，。！？、；：""''《》【】
+        </p>
+      </div>
+    </div>
+
+    <!-- 等宽测试 -->
+    <div class="test-section">
+      <h2>📐 等宽字体对齐测试</h2>
+      <pre>
+英文字符: abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ
+数字字符: 0123456789 | 一二三四五六七八九十
+对齐测试: |||||||||| | ||||||||||
+中文字符: 中中中中中 | 中中中中中
+混合测试: a中b文c混d合e测f试g | abc def ghi
+      </pre>
+    </div>
+
+    <!-- ASCII 艺术测试 -->
+    <div class="test-section">
+      <h2>🎨 ASCII 艺术对齐测试</h2>
+      <div class="ascii-art">╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║         ╔═══╗                                          ╔═══╗         ║
+║         ║   ║==========================================║   ║         ║
+║         ║   ║                                          ║   ║         ║
+║         ║ ✦║          X I U X I A N    M U D          ║✦ ║         ║
+║         ║   ║                                          ║   ║         ║
+║         ║   ║          ━━━━━━━━━━━━━━━━━━━━━━          ║   ║         ║
+║         ║   ║             《 玄 鉴 仙 录 》            ║   ║         ║
+║         ║   ║          ━━━━━━━━━━━━━━━━━━━━━━          ║   ║         ║
+║         ║   ║                                          ║   ║         ║
+║         ║   ║     Xuanjian Chronicles of Immortals     ║   ║         ║
+║         ║   ║                                          ║   ║         ║
+║         ║   ║==========================================║   ║         ║
+║         ╚═══╝                                          ╚═══╝         ║
+╚══════════════════════════════════════════════════════════════════════╝</div>
+    </div>
+
+    <!-- 特殊字符测试 -->
+    <div class="test-section">
+      <h2>✨ 特殊字符和图标测试</h2>
+      <div class="font-check">
+        <p>
+          <strong>常用符号：</strong>
+          ✦ ✿ ⚡ ✨ 📖 ❤ 🎮 🔥 💎 ⭐ 🌟
+        </p>
+        <p>
+          <strong>边框字符：</strong>
+          ║ ╔ ╗ ╚ ╝ ═ ━ ┃ ┏ ┓ ┗ ┛ ─ │ ┌ ┐ └ ┘
+        </p>
+        <p>
+          <strong>箭头符号：</strong>
+          ← → ↑ ↓ ⇐ ⇒ ⇑ ⇓ ⬅ ➡ ⬆ ⬇
+        </p>
+      </div>
+    </div>
+
+    <!-- 开发者信息 -->
+    <div class="test-section">
+      <h2>🔧 开发者信息</h2>
+      <pre id="dev-info">正在加载字体信息...</pre>
+    </div>
+  </div>
+
+  <script>
+    // 检查字体是否加载
+    async function checkFonts() {
+      const regularStatus = document.getElementById('status-regular');
+      const boldStatus = document.getElementById('status-bold');
+
+      try {
+        // 检测 Regular 字体
+        const regularLoaded = await document.fonts.load('1em "Sarasa Term SC Nerd"');
+        const isRegularLoaded = document.fonts.check('1em "Sarasa Term SC Nerd"');
+
+        if (isRegularLoaded) {
+          regularStatus.textContent = '✅ 已加载';
+          regularStatus.className = 'status loaded';
+        } else {
+          regularStatus.textContent = '❌ 加载失败';
+          regularStatus.className = 'status error';
+        }
+
+        // 检测 Bold 字体
+        const boldLoaded = await document.fonts.load('bold 1em "Sarasa Term SC Nerd"');
+        const isBoldLoaded = document.fonts.check('bold 1em "Sarasa Term SC Nerd"');
+
+        if (isBoldLoaded) {
+          boldStatus.textContent = '✅ 已加载';
+          boldStatus.className = 'status loaded';
+        } else {
+          boldStatus.textContent = '❌ 加载失败';
+          boldStatus.className = 'status error';
+        }
+      } catch (error) {
+        console.error('字体检测失败:', error);
+        regularStatus.textContent = '❌ 检测错误';
+        regularStatus.className = 'status error';
+        boldStatus.textContent = '❌ 检测错误';
+        boldStatus.className = 'status error';
+      }
+
+      updateDevInfo();
+    }
+
+    // 更新开发者信息
+    function updateDevInfo() {
+      const devInfo = document.getElementById('dev-info');
+      const fonts = Array.from(document.fonts);
+      const sarasaFonts = fonts.filter(f => f.family.includes('Sarasa'));
+
+      let info = `字体总数: ${fonts.length}\n`;
+      info += `Sarasa 字体数: ${sarasaFonts.length}\n\n`;
+      info += `已加载的字体:\n`;
+
+      fonts.forEach(font => {
+        if (font.status === 'loaded') {
+          info += `  - ${font.family} (${font.weight}, ${font.style})\n`;
+        }
+      });
+
+      info += `\n计算样式:\n`;
+      info += `  font-family: ${getComputedStyle(document.body).fontFamily}\n`;
+      info += `  font-weight: ${getComputedStyle(document.body).fontWeight}\n`;
+
+      devInfo.textContent = info;
+    }
+
+    // 页面加载完成后检查字体
+    window.addEventListener('load', () => {
+      // 等待字体加载
+      document.fonts.ready.then(() => {
+        checkFonts();
+      });
+    });
+
+    // 如果字体很快加载，立即检查
+    if (document.fonts.status === 'loaded') {
+      checkFonts();
+    }
+  </script>
+</body>
+</html>

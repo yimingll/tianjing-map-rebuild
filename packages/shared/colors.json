@@ -1,0 +1,66 @@
+{
+  "version": "1.0.0",
+  "description": "水墨丹青主题配色 - 所有颜色均优化为在宣纸背景(#f5f5dc)上高对比度显示",
+  "colors": {
+    "basic": {
+      "red": { "code": "red", "hex": "#8b2500", "desc": "红色(朱砂) - 危险、战斗、错误" },
+      "green": { "code": "green", "hex": "#2d5016", "desc": "绿色(竹青) - 成功、生命、自然" },
+      "blue": { "code": "blue", "hex": "#2f5496", "desc": "蓝色(靛青) - 信息、魔法、灵力" },
+      "yellow": { "code": "yellow", "hex": "#b8860b", "desc": "黄色(赭石) - 警告、金币、光明" },
+      "cyan": { "code": "cyan", "hex": "#1a5f7a", "desc": "青色(深青) - 水系、冰系" },
+      "magenta": { "code": "magenta", "hex": "#8b008b", "desc": "品红(紫檀) - 魅惑、紫色变种" },
+      "white": { "code": "white", "hex": "#5a5a5a", "desc": "白色(浅墨) - 圣洁、光明" },
+      "black": { "code": "black", "hex": "#1a1a1a", "desc": "黑色(浓墨) - 黑暗、死亡" }
+    },
+    "bright": {
+      "bright-red": { "code": "bright-red", "hex": "#b22222", "desc": "亮红(深红) - 高亮显示的红色" },
+      "bright-green": { "code": "bright-green", "hex": "#3d6b2e", "desc": "亮绿(深绿) - 高亮显示的绿色" },
+      "bright-blue": { "code": "bright-blue", "hex": "#3a6da8", "desc": "亮蓝(深蓝) - 高亮显示的蓝色" },
+      "bright-yellow": { "code": "bright-yellow", "hex": "#d4a017", "desc": "亮黄(深金) - 高亮显示的黄色" },
+      "bright-cyan": { "code": "bright-cyan", "hex": "#2a7f93", "desc": "亮青(碧青) - 高亮显示的青色" },
+      "bright-magenta": { "code": "bright-magenta", "hex": "#a020f0", "desc": "亮品红(深紫) - 高亮品红" }
+    },
+    "game": {
+      "gold": { "code": "gold", "hex": "#b8860b", "desc": "金色(古金) - 奖励、金币、珍贵物品" },
+      "silver": { "code": "silver", "hex": "#696969", "desc": "银色(灰墨) - 普通装备、银币" },
+      "bronze": { "code": "bronze", "hex": "#8b6914", "desc": "铜色(古铜) - 低级装备、铜币" },
+      "orange": { "code": "orange", "hex": "#c07000", "desc": "橙色(赭黄) - 动作、传说装备" },
+      "purple": { "code": "purple", "hex": "#6b2d8b", "desc": "紫色(深紫) - 史诗装备、稀有" },
+      "pink": { "code": "pink", "hex": "#c75a7c", "desc": "粉色(胭脂) - 特殊效果、魅力" }
+    },
+    "immortal": {
+      "immortal": { "code": "immortal", "hex": "#a67c00", "desc": "仙气金(金漆) - 仙人、仙器、飞升" },
+      "divine": { "code": "divine", "hex": "#d4a017", "desc": "神圣金(鎏金) - 神器、神通" },
+      "spirit": { "code": "spirit", "hex": "#2f5496", "desc": "灵气蓝(天青) - 灵气、修炼、悟道" },
+      "demonic": { "code": "demonic", "hex": "#6b0000", "desc": "魔气红(血红) - 魔道、邪功、煞气" },
+      "jade": { "code": "jade", "hex": "#1a6b4a", "desc": "玉绿(翠绿) - 丹药、玉石、仙草" },
+      "mystic": { "code": "mystic", "hex": "#4b0082", "desc": "神秘紫(靛紫) - 奥秘、天机、禁制" }
+    },
+    "system": {
+      "system": { "code": "system", "hex": "#6b3410", "desc": "系统棕(深褐) - 系统消息" },
+      "error": { "code": "error", "hex": "#8b0000", "desc": "错误红(深红) - 错误提示" },
+      "success": { "code": "success", "hex": "#2d5016", "desc": "成功绿(墨绿) - 成功提示" },
+      "warning": { "code": "warning", "hex": "#b8860b", "desc": "警告橙(赭石) - 警告提示" },
+      "info": { "code": "info", "hex": "#2f5496", "desc": "信息蓝(靛青) - 信息提示" }
+    },
+    "gray": {
+      "gray": { "code": "gray", "hex": "#5a5a5a", "desc": "灰色(中墨) - 中性、禁用" },
+      "light-gray": { "code": "light-gray", "hex": "#6b6b6b", "desc": "浅灰(淡墨) - 次要信息" },
+      "dark-gray": { "code": "dark-gray", "hex": "#3a3a3a", "desc": "深灰(重墨) - 阴影、背景" }
+    }
+  },
+  "aliases": {
+    "红": "red",
+    "绿": "green",
+    "蓝": "blue",
+    "黄": "yellow",
+    "青": "cyan",
+    "紫": "purple",
+    "白": "white",
+    "黑": "black",
+    "金": "gold",
+    "银": "silver",
+    "橙": "orange",
+    "粉": "pink"
+  }
+}

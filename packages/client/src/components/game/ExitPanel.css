@@ -1,0 +1,178 @@
+.exit-panel {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  min-width: 200px;
+}
+
+.exit-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.exit-panel-title {
+  color: #ffd700;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.exit-count {
+  background: rgba(255, 215, 0, 0.2);
+  color: #ffd700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.direction-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, auto);
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.exit-button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #888;
+  cursor: not-allowed;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  min-height: 60px;
+}
+
+/* 不可用方向的悬停效果 */
+.exit-button.unavailable:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #aaa;
+}
+
+.exit-button.available {
+  background: rgba(0, 150, 255, 0.1);
+  border-color: rgba(0, 150, 255, 0.4);
+  color: #4db8ff;
+  cursor: default;
+}
+
+/* 悬停效果 - 为可用方向添加视觉反馈，保持布局不变 */
+.exit-button.available:hover {
+  background: rgba(0, 150, 255, 0.25);
+  border-color: rgba(0, 150, 255, 0.7);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 150, 255, 0.2);
+}
+
+/* 移除激活和禁用状态样式 - 方向按钮现在仅用于显示 */
+
+.direction-symbol {
+  font-size: 1.5rem;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.direction-name {
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+
+.lock-icon {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+  font-size: 0.8rem;
+}
+
+.no-exits-message {
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+  padding: 1rem;
+  font-style: italic;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .exit-panel {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .direction-grid {
+    gap: 0.3rem;
+  }
+
+  .exit-button {
+    padding: 0.6rem 0.3rem;
+    min-height: 50px;
+  }
+
+  .direction-symbol {
+    font-size: 1.2rem;
+  }
+
+  .direction-name {
+    font-size: 0.7rem;
+  }
+}
+
+/* 键盘快捷键提示 */
+.exit-button.available::after {
+  content: attr(data-shortcut);
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0.3rem;
+  font-size: 0.65rem;
+  opacity: 0.5;
+  color: #ffd700;
+}
+
+/* 新增样式 - 面板底部 */
+.exit-panel-footer {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.keyboard-hint {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+/* 移除无障碍支持样式 - 方向按钮现在仅用于显示 */
+
+/* 移除增强悬停动画效果 - 方向按钮现在仅用于显示 */
+
+/* 优化锁定图标样式 */
+.lock-icon {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+  font-size: 0.8rem;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+/* 改进无出口消息的样式 */
+.no-exits-message {
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+  padding: 1rem;
+  font-style: italic;
+  opacity: 0.8;
+}

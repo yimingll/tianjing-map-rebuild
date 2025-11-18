@@ -1,0 +1,183 @@
+/**
+ * MUD游戏统一按钮系统
+ * 所有按钮样式通过CSS变量控制，变量定义在 themes.ts
+ * 修改 themes.ts 即可全局改变按钮样式
+ */
+
+/* ==================== 基础按钮类 ==================== */
+.mud-btn {
+  /* 布局 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  /* 尺寸 */
+  padding: var(--btnPaddingY) var(--btnPaddingX);
+  min-width: var(--btnMinWidth);
+
+  /* 边框和圆角 */
+  border: var(--btnBorderWidth) solid var(--btnBorder);
+  border-radius: var(--btnBorderRadius);
+
+  /* 背景和颜色 */
+  background: var(--btnBg);
+  color: var(--btnText);
+
+  /* 文字样式 */
+  font-size: var(--btnFontSize);
+  font-weight: var(--btnFontWeight);
+  letter-spacing: var(--btnLetterSpacing);
+  line-height: 1;
+  white-space: nowrap;
+
+  /* 阴影效果 */
+  text-shadow: var(--btnTextShadow);
+  box-shadow: var(--btnBoxShadow);
+
+  /* 交互 */
+  cursor: pointer;
+  user-select: none;
+  transition: var(--btnTransition);
+}
+
+.mud-btn:hover {
+  background: var(--btnHoverBg);
+  border-color: var(--btnHoverBorder);
+  color: var(--btnHoverText);
+  transform: var(--btnHoverTransform);
+  box-shadow: var(--btnHoverShadow);
+}
+
+.mud-btn:active {
+  transform: var(--btnActiveTransform);
+  box-shadow: var(--btnActiveShadow);
+}
+
+.mud-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ==================== 按钮尺寸变体 ==================== */
+
+/* 小按钮 - 复刻 zoom-btn 样式 */
+.mud-btn-sm {
+  width: var(--btnSmSize);
+  height: var(--btnSmSize);
+  min-width: unset;
+  padding: 0;
+  font-size: var(--btnSmFontSize);
+  border-width: var(--btnSmBorderWidth);
+  border-radius: var(--btnSmBorderRadius);
+}
+
+.mud-btn-sm:hover {
+  transform: scale(1.1);
+}
+
+.mud-btn-sm:active {
+  transform: scale(0.95);
+}
+
+/* 圆形按钮 - 复刻 zoom-reset-btn 样式 */
+.mud-btn-circle {
+  width: 32px;
+  height: 32px;
+  min-width: unset;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.mud-btn-circle:hover {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--background);
+  transform: rotate(180deg) scale(1.1);
+}
+
+.mud-btn-circle:active {
+  transform: rotate(180deg) scale(0.95);
+}
+
+/* ==================== 按钮图标 ==================== */
+.mud-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* ==================== 语义化按钮变体 ==================== */
+
+/* 主要按钮 - 保存等重要操作 */
+.mud-btn-primary {
+  /* 使用成功色 */
+}
+
+.mud-btn-primary:hover {
+  /* hover时使用成功色背景 */
+}
+
+/* 危险按钮 - 删除等危险操作 */
+.mud-btn-danger {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.mud-btn-danger:hover {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: var(--background);
+}
+
+/* 警告按钮 */
+.mud-btn-warning {
+  border-color: var(--warning);
+  color: var(--warning);
+}
+
+.mud-btn-warning:hover {
+  background: var(--warning);
+  border-color: var(--warning);
+  color: var(--background);
+}
+
+/* 信息按钮 */
+.mud-btn-info {
+  border-color: var(--info);
+  color: var(--info);
+}
+
+.mud-btn-info:hover {
+  background: var(--info);
+  border-color: var(--info);
+  color: var(--background);
+}
+
+/* ==================== 按钮组 ==================== */
+.mud-btn-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==================== 兼容性类名 ==================== */
+/* 为了不影响现有代码，提供别名 */
+.setting-btn {
+  /* 等同于 .mud-btn，保持向后兼容 */
+  composes: mud-btn;
+}
+
+.zoom-btn {
+  /* 等同于 .mud-btn-sm，保持向后兼容 */
+  composes: mud-btn-sm;
+}
+
+.zoom-reset-btn {
+  /* 等同于 .mud-btn-circle，保持向后兼容 */
+  composes: mud-btn-circle;
+}

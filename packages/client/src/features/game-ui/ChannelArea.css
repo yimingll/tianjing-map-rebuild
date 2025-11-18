@@ -1,0 +1,204 @@
+/* 频道区域容器 */
+.channel-area {
+  position: relative;
+  border-bottom: 2px solid var(--border);
+  background: var(--panel);
+  transition: all 0.3s ease;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 折叠状态 */
+.channel-area.collapsed {
+  height: 40px;
+}
+
+/* 折叠按钮 */
+.collapse-btn {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  background: var(--primary);
+  border: 1px solid var(--border);
+  color: var(--background);
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 10;
+  transition: all 0.2s;
+}
+
+.collapse-btn:hover {
+  background: var(--secondary);
+  box-shadow: 0 0 10px var(--glow);
+}
+
+/* Tab标签栏 */
+.channel-tabs {
+  display: flex;
+  gap: 4px;
+  background: var(--background);
+  padding: 8px 8px 0 8px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.channel-tab {
+  position: relative;
+  padding: 8px 16px;
+  border: none;
+  background: rgba(139, 69, 19, 0.1);
+  color: var(--text);
+  cursor: pointer;
+  border-radius: 6px 6px 0 0;
+  transition: all 0.2s;
+  font-family: var(--font-family);
+  font-size: 14px;
+  border: 1px solid transparent;
+}
+
+.channel-tab:hover {
+  background: rgba(139, 69, 19, 0.2);
+}
+
+.channel-tab.active {
+  background: var(--panel);
+  color: var(--primary);
+  border: 1px solid var(--border);
+  border-bottom: 2px solid var(--panel);
+  font-weight: bold;
+  margin-bottom: -1px;
+}
+
+.channel-tab.unread {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(220, 20, 60, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.6);
+  }
+}
+
+/* 未读徽章 */
+.channel-tab .badge {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  background: #dc143c;
+  color: white;
+  border-radius: 10px;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: bold;
+  min-width: 18px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 频道消息区域 */
+.channel-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  background: var(--panel);
+  font-family: var(--font-family);
+}
+
+/* 自定义滚动条 */
+.channel-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.channel-messages::-webkit-scrollbar-track {
+  background: rgba(139, 69, 19, 0.1);
+  border-radius: 4px;
+}
+
+.channel-messages::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+.channel-messages::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+/* 空消息提示 */
+.channel-empty {
+  text-align: center;
+  color: var(--textDim);
+  padding: 40px 20px;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+/* 频道消息样式 */
+.channel-message {
+  margin: 6px 0;
+  padding: 6px 10px;
+  line-height: 1.6;
+  border-radius: 4px;
+  background: rgba(139, 69, 19, 0.05);
+  transition: background 0.2s;
+}
+
+.channel-message:hover {
+  background: rgba(139, 69, 19, 0.1);
+}
+
+/* 不同消息类型的颜色 - 优化对比度 */
+.message-chat-world,
+.message-世界 {
+  color: #2f5496;  /* 靛青蓝 */
+  border-left: 3px solid #2f5496;
+}
+
+.message-chat-team,
+.message-队伍 {
+  color: #2d5016;  /* 深绿（竹青） */
+  border-left: 3px solid #2d5016;
+}
+
+.message-chat-tell,
+.message-私聊 {
+  color: #8b008b;  /* 深紫（紫檀） */
+  border-left: 3px solid #8b008b;
+}
+
+.message-chat-say,
+.message-本地 {
+  color: #b8860b;  /* 暗金（赭石） */
+  border-left: 3px solid #b8860b;
+}
+
+.message-system,
+.message-system-login,
+.message-system-logout,
+.message-system-announce,
+.message-系统 {
+  color: #6b3410;  /* 深褐（浓墨） */
+  border-left: 3px solid #6b3410;
+}
+
+.message-combat,
+.message-combat-start,
+.message-combat-round,
+.message-combat-end,
+.message-战斗,
+.message-battle {
+  color: #8b2500;  /* 朱砂红 */
+  border-left: 3px solid #8b2500;
+  font-weight: 500;
+}
+
+/* 折叠状态下隐藏消息 */
+.channel-area.collapsed .channel-messages {
+  display: none;
+}

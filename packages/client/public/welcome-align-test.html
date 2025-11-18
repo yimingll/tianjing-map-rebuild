@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>欢迎信息对齐测试</title>
+  <style>
+    @font-face {
+      font-family: 'Sarasa Term SC Nerd';
+      src: url('/fonts/SarasaTermSCNerd-Regular.ttf') format('truetype');
+      font-weight: 400;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Sarasa Term SC Nerd', monospace;
+      background: #1a1a1a;
+      color: #e0e0e0;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #4CAF50;
+    }
+
+    .preview {
+      white-space: pre;
+      background: #2a2a2a;
+      padding: 10px;
+      border: 1px solid #3a3a3a;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+
+    .stats {
+      background: #2a2a2a;
+      padding: 15px;
+      border-radius: 4px;
+      margin-top: 20px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .stats h3 {
+      margin-top: 0;
+      color: #64B5F6;
+    }
+
+    .line-info {
+      font-size: 12px;
+      margin: 5px 0;
+      padding: 3px 5px;
+      border-radius: 3px;
+    }
+
+    .error-line {
+      background-color: rgba(244, 67, 54, 0.2);
+      color: #ff6b6b;
+    }
+
+    .good-line {
+      background-color: rgba(76, 175, 80, 0.1);
+      color: #81c784;
+    }
+
+    .controls {
+      margin: 20px 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    .ruler {
+      white-space: pre;
+      color: #666;
+      font-size: 12px;
+      background: #1e1e1e;
+      padding: 5px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 欢迎信息对齐测试工具</h1>
+
+    <div class="ruler">0----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8</div>
+
+    <div class="controls">
+      <button onclick="loadWelcomeMessage()">📥 加载欢迎信息</button>
+      <button onclick="analyzeAlignment()">🔍 分析对齐</button>
+      <button onclick="exportReport()">📊 导出报告</button>
+    </div>
+
+    <div class="preview" id="preview">加载中...</div>
+
+    <div class="stats" id="stats"></div>
+  </div>
+
+  <script>
+    let canvas, ctx;
+    let welcomeText = '';
+
+    function init() {
+      canvas = document.createElement('canvas');
+      ctx = canvas.getContext('2d');
+      ctx.font = '14px "Sarasa Term SC Nerd"';
+
+      document.fonts.ready.then(() => {
+        loadWelcomeMessage();
+      });
+    }
+
+    function measureWidth(text) {
+      return ctx.measureText(text).width;
+    }
+
+    async function loadWelcomeMessage() {
+      // 模拟欢迎信息（从服务器获取的内容）
+      welcomeText = `╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║         ╔═══╗                                          ╔═══╗         ║
+║         ║   ║==========================================║   ║         ║
+║         ║   ║                                          ║   ║         ║
+║         ║ ✦ ║          X I U X I A N    M U D          ║ ✦ ║         ║
+║         ║   ║                                          ║   ║         ║
+║         ║   ║          ━━━━━━━━━━━━━━━━━━━━━━          ║   ║         ║
+║         ║   ║             《 玄 鉴 仙 录 》            ║   ║         ║
+║         ║   ║          ━━━━━━━━━━━━━━━━━━━━━━          ║   ║         ║
+║         ║   ║                                          ║   ║         ║
+║         ║   ║     Xuanjian Chronicles of Immortals     ║   ║         ║
+║         ║   ║                                          ║   ║         ║
+║         ║   ║==========================================║   ║         ║
+║         ╚═══╝                                          ╚═══╝         ║
+║                                                                      ║
+║           ✿~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~✿             ║
+║                                                                      ║
+║                        "以玄鉴之眼，观万世沉浮"                      ║
+║                        "以仙录之笔，书千秋传奇"                      ║
+║                                                                      ║
+║           ✿~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~✿             ║
+║                                                                      ║
+║    ╔══════════════════════════════════════════════════════════════╗  ║
+║    ║                                                              ║  ║
+║    ║                          【卷首语】                          ║  ║
+║    ║                                                              ║  ║
+║    ║           天地初开，鸿蒙未判，上古仙人炼制玄鉴宝镜，         ║  ║
+║    ║               可照真伪，辨善恶，察天机，悟大道。             ║  ║
+║    ║                                                              ║  ║
+║    ║             岁月流转，灵气复苏，修真盛世再临人间。           ║  ║
+║    ║            无数修士踏上求道之路，于这仙录之中留名。          ║  ║
+║    ║                                                              ║  ║
+║    ╚══════════════════════════════════════════════════════════════╝  ║
+║                                                                      ║
+║    ╔══════════════════════════════════════════════════════════════╗  ║
+║    ║  ✦ 仙界实时 ✦                                                ║  ║
+║    ╠══════════════════════════════════════════════════════════════╣  ║
+║    ║                                                              ║  ║
+║    ║  在线修士: 0  人             版本: 玄鉴初启 5.0.1            ║  ║
+║    ║  灵气浓度: 充沛              运行状态: 稳定                  ║  ║
+║    ║  今日天象: 紫气东来          更新: 炼丹系统已开放            ║  ║
+║    ║                                                              ║  ║
+║    ╚══════════════════════════════════════════════════════════════╝  ║
+║          "一卷仙录，记载千秋功过；一面玄鉴，映照万世真相。"          ║
+║                                                                      ║
+║    ┏━━━━━━━━━━━━━━━━━━━━━━━ 入门指引 ━━━━━━━━━━━━━━━━━━━━━━━┓        ║
+║    ┃                                                              ┃  ║
+║    ┃  ⚡ 新手修士 - 创建账号                                      ┃  ║
+║    ┃     输入: new 或 新账号                                      ┃  ║
+║    ┃     (系统将引导您一步步完成注册)                            ┃  ║
+║    ┃                                                              ┃  ║
+║    ┃  ✨ 归来修士 - 登录账号                                      ┃  ║
+║    ┃     connect <用户名> <密码>                                  ┃  ║
+║    ┃     (可使用中文命令: 登录 <用户名> <密码>)                  ┃  ║
+║    ┃                                                              ┃  ║
+║    ┃  📖 查看帮助                                                  ┃  ║
+║    ┃     help                                                     ┃  ║
+║    ┃                                                              ┃  ║
+║    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛  ║
+╚══════════════════════════════════════════════════════════════════════╝`;
+
+      document.getElementById('preview').textContent = welcomeText;
+      analyzeAlignment();
+    }
+
+    function analyzeAlignment() {
+      const preview = document.getElementById('preview');
+      const stats = document.getElementById('stats');
+
+      const lines = welcomeText.split('\n');
+      let statsHtml = '<h3>📊 对齐分析报告</h3>';
+
+      // 测量所有行
+      const measurements = lines.map((line, index) => {
+        const width = measureWidth(line);
+        const charCount = line.length;
+        return {
+          index: index + 1,
+          line: line,
+          width: width,
+          charCount: charCount
+        };
+      });
+
+      // 找出最常见的宽度（应该是边框行的宽度）
+      const widths = measurements.map(m => Math.round(m.width));
+      const widthCounts = {};
+      widths.forEach(w => {
+        widthCounts[w] = (widthCounts[w] || 0) + 1;
+      });
+      const targetWidth = Math.max(...Object.keys(widthCounts).map(Number));
+
+      statsHtml += `<div style="margin-bottom: 15px; padding: 10px; background: #1e1e1e; border-radius: 4px;">`;
+      statsHtml += `<strong>目标宽度:</strong> ${targetWidth.toFixed(2)}px<br>`;
+      statsHtml += `<strong>总行数:</strong> ${lines.length}<br>`;
+      statsHtml += `</div>`;
+
+      let errorCount = 0;
+      measurements.forEach(m => {
+        const diff = m.width - targetWidth;
+        const isGood = Math.abs(diff) < 2; // 允许2像素误差
+
+        if (!isGood) errorCount++;
+
+        const status = isGood ? '✅' : '❌';
+        const lineClass = isGood ? 'good-line' : 'error-line';
+
+        statsHtml += `<div class="line-info ${lineClass}">`;
+        statsHtml += `${status} 第 ${m.index} 行: ${m.width.toFixed(2)}px `;
+        statsHtml += `(${m.charCount} 字符, 差值: ${diff > 0 ? '+' : ''}${diff.toFixed(2)}px)`;
+
+        // 显示行尾字符
+        const lastChars = m.line.slice(-5);
+        statsHtml += `<br><span style="opacity: 0.7;">行尾: "${lastChars}"</span>`;
+        statsHtml += `</div>`;
+      });
+
+      statsHtml += `<div style="margin-top: 15px; padding: 10px; background: #1e1e1e; border-radius: 4px;">`;
+      statsHtml += `<strong>对齐状态:</strong> ${lines.length - errorCount} 行对齐, ${errorCount} 行未对齐`;
+      statsHtml += `</div>`;
+
+      stats.innerHTML = statsHtml;
+    }
+
+    function exportReport() {
+      const lines = welcomeText.split('\n');
+      let report = '# 欢迎信息对齐报告\n\n';
+
+      lines.forEach((line, index) => {
+        const width = measureWidth(line);
+        report += `行 ${index + 1}: ${width.toFixed(2)}px (${line.length} 字符)\n`;
+      });
+
+      const blob = new Blob([report], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'welcome-alignment-report.txt';
+      a.click();
+      URL.revokeObjectURL(url);
+
+      alert('报告已导出！');
+    }
+
+    window.addEventListener('load', init);
+  </script>
+</body>
+</html>

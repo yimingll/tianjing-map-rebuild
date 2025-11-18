@@ -1,0 +1,23 @@
+{
+  "totalRooms": 50,
+  "connectedComponents": 1,
+  "isFullyConnected": true,
+  "brokenExits": 0,
+  "unidirectionalConnections": 0,
+  "roomsWithNoExits": 0,
+  "components": [
+    {
+      "id": 1,
+      "size": 50,
+      "rooms": [
+        "yz_gate_east_outside",
+        "yz_gate_east_inside",
+        "yz_east_road",
+        "yz_main_street_east",
+        "yz_market_entrance"
+      ]
+    }
+  ],
+  "brokenExitsList": [],
+  "unidirectionalList": []
+}

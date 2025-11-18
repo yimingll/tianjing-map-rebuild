@@ -1,0 +1,353 @@
+{
+  "city": {
+    "name": "天京城",
+    "fullName": "大周王朝天京府天京城",
+    "type": "capital",
+    "totalParts": 3,
+    "totalDistricts": 11,
+    "totalLocations": 18,
+    "totalRooms": 140
+  },
+  "summary": {
+    "part1_rooms": 52,
+    "part2_rooms": 48,
+    "part3_rooms": 40,
+    "total_rooms": 140,
+    "verification": "完全符合预期"
+  },
+  "districts": [
+    {
+      "order": 1,
+      "id": "south_gate_district",
+      "name": "南门区",
+      "type": "gate",
+      "part": 1,
+      "rooms": 11,
+      "locations": 1,
+      "description": "南方主要出入口，守卫森严",
+      "key_rooms": [
+        "tj_gate_south_outside",
+        "tj_gate_south_passage",
+        "tj_gate_south_inside",
+        "tj_carriage_station"
+      ],
+      "safeZone": true,
+      "pvpAllowed": false
+    },
+    {
+      "order": 2,
+      "id": "imperial_district",
+      "name": "皇城区",
+      "type": "imperial",
+      "part": 1,
+      "rooms": 31,
+      "locations": 3,
+      "description": "皇宫及相关机构，权力中心",
+      "key_rooms": [
+        "tj_palace_square",
+        "tj_palace_gate",
+        "tj_palace_courtyard",
+        "tj_guozijian_gate",
+        "tj_qintianjian_tower"
+      ],
+      "safeZone": true,
+      "pvpAllowed": false
+    },
+    {
+      "order": 3,
+      "id": "commercial_district",
+      "name": "商业区",
+      "type": "commercial",
+      "part": 1,
+      "rooms": 10,
+      "locations": 2,
+      "description": "高端商业街，文化中心",
+      "key_rooms": [
+        "tj_street_royal_south_01",
+        "tj_street_royal_mid_01",
+        "tj_street_royal_north_01",
+        "tj_shop_weapons",
+        "tj_tavern_drunken_immortal",
+        "tj_auction_house",
+        "tj_bank"
+      ],
+      "safeZone": true,
+      "pvpAllowed": false
+    },
+    {
+      "order": 4,
+      "id": "east_district",
+      "name": "东城区",
+      "type": "residential",
+      "part": 2,
+      "rooms": 20,
+      "locations": 2,
+      "description": "豪门大院聚集，白家老宅所在",
+      "key_rooms": [
+        "tj_bai_mansion_gate",
+        "tj_bai_mansion_front_yard",
+        "tj_bai_mansion_main_hall",
+        "tj_street_east_mansion",
+        "tj_street_east_market",
+        "tj_east_clinic",
+        "tj_east_temple"
+      ],
+      "safeZone": true,
+      "pvpAllowed": false
+    },
+    {
+      "order": 5,
+      "id": "west_district",
+      "name": "西城区",
+      "type": "residential",
+      "part": 2,
+      "rooms": 16,
+      "locations": 1,
+      "description": "平民区，手工作坊聚集",
+      "key_rooms": [
+        "tj_street_west_main",
+        "tj_workshop_district",
+        "tj_workshop_carpenter",
+        "tj_workshop_blacksmith",
+        "tj_west_market",
+        "tj_west_residential",
+        "tj_west_clinic"
+      ],
+      "safeZone": true,
+      "pvpAllowed": false
+    },
+    {
+      "order": 6,
+      "id": "government_district",
+      "name": "官府区",
+      "type": "government",
+      "part": 2,
+      "rooms": 12,
+      "locations": 2,
+      "description": "行政中心，军事指挥部",
+      "key_rooms": [
+        "tj_ministry_plaza",
+        "tj_ministry_personnel",
+        "tj_ministry_revenue",
+        "tj_ministry_rites",
+        "tj_ministry_war",
+        "tj_ministry_justice",
+        "tj_ministry_works",
+        "tj_prison",
+        "tj_barracks_main"
+      ],
+      "safeZone": true,
+      "pvpAllowed": false
+    },
+    {
+      "order": 7,
+      "id": "north_gate_district",
+      "name": "北门区",
+      "type": "gate",
+      "part": 3,
+      "rooms": 8,
+      "locations": 1,
+      "description": "北方防御要塞，通往北疆",
+      "key_rooms": [
+        "tj_gate_north_outside",
+        "tj_gate_north_passage",
+        "tj_gate_north_inside",
+        "tj_gate_north_tower",
+        "tj_north_warehouse",
+        "tj_north_temp_barracks"
+      ],
+      "safeZone": true,
+      "pvpAllowed": false
+    },
+    {
+      "order": 8,
+      "id": "east_gate_district",
+      "name": "东门区",
+      "type": "gate",
+      "part": 3,
+      "rooms": 4,
+      "locations": 1,
+      "description": "东方贸易出入口，商旅繁忙",
+      "key_rooms": [
+        "tj_gate_east_outside",
+        "tj_gate_east_passage",
+        "tj_gate_east_inside",
+        "tj_east_cargo_depot"
+      ],
+      "safeZone": true,
+      "pvpAllowed": false
+    },
+    {
+      "order": 9,
+      "id": "west_gate_district",
+      "name": "西门区",
+      "type": "gate",
+      "part": 3,
+      "rooms": 4,
+      "locations": 1,
+      "description": "西方丝路出入口，异域风情",
+      "key_rooms": [
+        "tj_gate_west_outside",
+        "tj_gate_west_passage",
+        "tj_gate_west_inside",
+        "tj_west_inn"
+      ],
+      "safeZone": true,
+      "pvpAllowed": false
+    },
+    {
+      "order": 10,
+      "id": "city_wall_district",
+      "name": "城墙区",
+      "type": "fortification",
+      "part": 3,
+      "rooms": 8,
+      "locations": 1,
+      "description": "环城防线，四角楼把守",
+      "key_rooms": [
+        "tj_wall_northeast_corner",
+        "tj_wall_northwest_corner",
+        "tj_wall_southeast_corner",
+        "tj_wall_southwest_corner",
+        "tj_wall_east_main",
+        "tj_wall_west_main"
+      ],
+      "safeZone": true,
+      "pvpAllowed": false
+    },
+    {
+      "order": 11,
+      "id": "slum_district",
+      "name": "贫民区",
+      "type": "slum",
+      "part": 3,
+      "rooms": 11,
+      "locations": 1,
+      "description": "城市最底层，社会矛盾集中",
+      "key_rooms": [
+        "tj_slum_entrance",
+        "tj_slum_main_alley",
+        "tj_slum_orphanage",
+        "tj_slum_soup_kitchen",
+        "tj_slum_shack_area"
+      ],
+      "safeZone_mix": true,
+      "dangerous_rooms": [
+        "tj_slum_gambling_den",
+        "tj_slum_drug_den",
+        "tj_slum_black_market",
+        "tj_slum_fight_pit"
+      ]
+    },
+    {
+      "order": 12,
+      "id": "outskirts_district",
+      "name": "城郊区",
+      "type": "outskirts",
+      "part": 3,
+      "rooms": 5,
+      "locations": 1,
+      "description": "四方官道，农业生产区",
+      "key_rooms": [
+        "tj_road_south_01",
+        "tj_farm_01",
+        "tj_road_north_01",
+        "tj_road_east_01",
+        "tj_road_west_01"
+      ],
+      "safeZone": false,
+      "pvpAllowed": true
+    }
+  ],
+  "connectivity": {
+    "main_hubs": [
+      {
+        "name": "宫前广场",
+        "roomId": "tj_palace_square",
+        "connections": 5,
+        "directions": ["north", "south", "east", "west", "special"]
+      },
+      {
+        "name": "六部广场",
+        "roomId": "tj_ministry_plaza",
+        "connections": 4,
+        "directions": ["north", "south", "east", "west"]
+      },
+      {
+        "name": "西大街",
+        "roomId": "tj_street_west_main",
+        "connections": 4,
+        "directions": ["north", "south", "east", "west"]
+      }
+    ],
+    "main_axes": {
+      "north_south": "南门 ↔ 商业区 ↔ 皇城 ↔ 北门（御街）",
+      "east_west": "西门 ↔ 官府区 ↔ 皇城 ↔ 东门（长安街）",
+      "outer_ring": "四城门 + 城墙系统"
+    }
+  },
+  "statistics": {
+    "total_statistics": {
+      "total_districts": 11,
+      "total_locations": 18,
+      "total_rooms": 140,
+      "total_npcs_types": "30+",
+      "total_items_types": "50+"
+    },
+    "by_part": {
+      "part_1": {
+        "districts": 3,
+        "locations": 10,
+        "rooms": 52,
+        "description": "南门、皇城、商业中心"
+      },
+      "part_2": {
+        "districts": 3,
+        "locations": 7,
+        "rooms": 48,
+        "description": "东城、西城、官府"
+      },
+      "part_3": {
+        "districts": 5,
+        "locations": 7,
+        "rooms": 40,
+        "description": "北东西门、城墙、贫民区、城郊"
+      }
+    },
+    "by_type": {
+      "gate": 5,
+      "residential": 3,
+      "government": 1,
+      "imperial": 1,
+      "commercial": 1,
+      "fortification": 1,
+      "slum": 1,
+      "outskirts": 1
+    },
+    "by_safety": {
+      "safe_zones": 10,
+      "mixed_zones": 1,
+      "danger_zones": 1
+    }
+  },
+  "files": {
+    "part_1": {
+      "filename": "tianjing_cheng_part1.json",
+      "lines": 2406,
+      "districts": 3,
+      "rooms": 52
+    },
+    "part_2": {
+      "filename": "tianjing_cheng_part2.json",
+      "lines": 2000,
+      "districts": 3,
+      "rooms": 48
+    },
+    "part_3": {
+      "filename": "tianjing_cheng_part3.json",
+      "lines": 1800,
+      "districts": 5,
+      "rooms": 40
+    }
+  }
+}

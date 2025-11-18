@@ -1,0 +1,160 @@
+/**
+ * 装备对比 Tooltip 样式
+ * 水墨丹青主题
+ */
+
+.equipment-compare-tooltip {
+  position: absolute;
+  top: 0;
+  left: 105%;
+  z-index: 1000;
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.98), rgba(38, 38, 38, 0.98));
+  border: 2px solid rgba(139, 69, 19, 0.6);
+  border-radius: 8px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  min-width: 450px;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+  font-family: var(--font-family);
+}
+
+.compare-section {
+  flex: 1;
+  padding: 12px;
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid rgba(139, 69, 19, 0.4);
+  border-radius: 6px;
+}
+
+.compare-section h4 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(139, 69, 19, 0.3);
+}
+
+.quality-badge {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(139, 69, 19, 0.3);
+  border: 1px solid rgba(139, 69, 19, 0.5);
+}
+
+.compare-section.new-item h4 {
+  color: #90d7ff;
+}
+
+.compare-section.current-item h4 {
+  color: #ffa07a;
+}
+
+/* 品质颜色 */
+.quality-common {
+  color: #d0d0d0;
+}
+
+.quality-uncommon {
+  color: #90d7ff;
+}
+
+.quality-rare {
+  color: #b19cd9;
+}
+
+.quality-epic {
+  color: #ff66cc;
+}
+
+.quality-legendary {
+  color: #ffaa00;
+}
+
+.attributes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.attribute-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  background: rgba(20, 20, 20, 0.4);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.attr-name {
+  color: #c9b89a;
+  font-weight: 500;
+}
+
+.attr-value {
+  color: #90ee90;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.diff-positive {
+  color: #90ee90;
+  font-size: 12px;
+}
+
+.diff-negative {
+  color: #ff6b6b;
+  font-size: 12px;
+}
+
+.compare-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: rgba(139, 69, 19, 0.6);
+  min-width: 40px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .equipment-compare-tooltip {
+    flex-direction: column;
+    min-width: 300px;
+    left: auto;
+    right: 105%;
+  }
+
+  .compare-divider {
+    transform: rotate(90deg);
+    min-height: 40px;
+    min-width: auto;
+  }
+}
+
+/* 悬浮动画 */
+.equipment-compare-tooltip {
+  animation: tooltipFadeIn 0.2s ease-out;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

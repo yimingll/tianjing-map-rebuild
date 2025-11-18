@@ -1,0 +1,151 @@
+/**
+ * 通用窗口模板样式
+ * 1:1复刻地图窗口和设置窗口的完整样式
+ */
+
+/* 导入地图窗口的所有基础样式 */
+@import '../features/map/RegionMap.css';
+
+/* ==================== 窗口遮罩层 ==================== */
+.window-template-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: overlayFadeIn var(--animation-duration, 100ms) ease-out;
+}
+
+.window-template-overlay.closing {
+  animation: overlayFadeOut var(--animation-duration, 100ms) ease-in;
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes overlayFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* ==================== 窗口容器 ==================== */
+/* 完全复用地图窗口的样式 */
+.window-template-container.seal-border-style {
+  width: 75vw;
+  height: 70vh;
+  max-width: 1000px;
+  max-height: 700px;
+  min-width: 600px;
+  min-height: 500px;
+  background: var(--background);
+  border: 3px solid var(--primary);
+  border-radius: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  box-shadow:
+    0 20px 80px rgba(0, 0, 0, 0.8),
+    inset 0 0 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 var(--glow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalZoomIn var(--animation-duration, 100ms) ease-in-out;
+}
+
+.window-template-container.seal-border-style.closing {
+  animation: modalZoomOut var(--animation-duration, 100ms) ease-in-out forwards;
+}
+
+/* ==================== 内容区域定制 ==================== */
+.seal-map-content.window-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    to bottom,
+    rgba(250, 240, 230, 0.95),
+    rgba(250, 240, 230, 1),
+    rgba(250, 240, 230, 0.95)
+  );
+  border: 2px solid var(--primary);
+  box-shadow:
+    0 0 25px var(--glow),
+    inset 0 0 30px rgba(0, 0, 0, 0.3),
+    inset 0 0 60px rgba(139, 69, 19, 0.05);
+  padding: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  cursor: default !important;
+  user-select: text;
+}
+
+/* 内容区域滚动条样式 */
+.seal-map-content.window-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.seal-map-content.window-content::-webkit-scrollbar-track {
+  background: rgba(139, 69, 19, 0.1);
+  border-radius: 4px;
+}
+
+.seal-map-content.window-content::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+  opacity: 0.6;
+}
+
+.seal-map-content.window-content::-webkit-scrollbar-thumb:hover {
+  opacity: 0.8;
+}
+
+/* ==================== 底部提示文字增强 ==================== */
+/* 确保在暗夜主题下可见 */
+.window-template-container .seal-footer-band .info-text {
+  color: var(--primary);
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+.window-template-container .seal-footer-band .info-icon {
+  opacity: 1;
+  filter: drop-shadow(0 0 6px var(--glow));
+}
+
+.window-template-container .seal-footer-band .info-divider {
+  color: var(--primary);
+  opacity: 0.7;
+}
+
+/* ==================== 响应式设计 ==================== */
+@media (max-width: 768px) {
+  .window-template-container {
+    width: 95vw;
+    height: 90vh;
+    max-height: none;
+    min-width: 320px;
+    min-height: 400px;
+  }
+
+  .seal-map-content.window-content {
+    padding: 20px;
+  }
+}

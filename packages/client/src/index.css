@@ -1,0 +1,55 @@
+/* MUD Game - 全局样式重置 */
+
+/* ==================== 统一按钮系统 ==================== */
+@import './styles/buttons.css';
+
+/* ==================== 统一字体配置 ==================== */
+
+/* Sarasa Term SC Nerd - 更纱终端字体（含 Nerd Font 图标） */
+@font-face {
+  font-family: 'Sarasa Term SC Nerd';
+  src: url('/fonts/SarasaTermSCNerd-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sarasa Term SC Nerd';
+  src: url('/fonts/SarasaTermSCNerd-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 全局字体变量 - 所有组件统一使用 */
+:root {
+  --font-family: 'Sarasa Term SC Nerd', monospace;
+  --font-family-fallback: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 确保所有元素继承统一字体 */
+*, *::before, *::after {
+  font-family: inherit;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+}

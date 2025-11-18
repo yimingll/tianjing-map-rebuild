@@ -1,0 +1,59 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.RATE_LIMITS = exports.ERROR_CODES = exports.CURRENCY_CONVERSION = exports.ATTRIBUTE_COSTS = exports.EXPERIENCE_TABLE = exports.GAME_CONFIG = void 0;
+exports.GAME_CONFIG = {
+    MAX_PLAYERS: 10000,
+    MAX_LEVEL: 100,
+    STARTING_HEALTH: 100,
+    STARTING_MANA: 50,
+    STARTING_GOLD: 100,
+    INVENTORY_SIZE: 40,
+    MAX_PARTY_SIZE: 6,
+    COMBAT_TURN_TIMEOUT: 30000,
+    SESSION_TIMEOUT: 3600000,
+    AFK_TIMEOUT: 600000,
+};
+exports.EXPERIENCE_TABLE = Array.from({ length: 100 }, (_, i) => {
+    return Math.floor(100 * Math.pow(i + 1, 1.5));
+});
+exports.ATTRIBUTE_COSTS = {
+    STRENGTH: 2,
+    DEXTERITY: 2,
+    CONSTITUTION: 2,
+    INTELLIGENCE: 2,
+    WISDOM: 2,
+    CHARISMA: 2,
+};
+exports.CURRENCY_CONVERSION = {
+    GOLD_TO_SILVER: 100,
+    SILVER_TO_COPPER: 100,
+    GOLD_TO_COPPER: 10000,
+};
+exports.ERROR_CODES = {
+    INVALID_CREDENTIALS: 'AUTH_001',
+    SESSION_EXPIRED: 'AUTH_002',
+    ACCOUNT_BANNED: 'AUTH_003',
+    PLAYER_NOT_FOUND: 'PLAYER_001',
+    INSUFFICIENT_LEVEL: 'PLAYER_002',
+    INSUFFICIENT_STATS: 'PLAYER_003',
+    INVENTORY_FULL: 'INV_001',
+    ITEM_NOT_FOUND: 'INV_002',
+    INSUFFICIENT_QUANTITY: 'INV_003',
+    NOT_IN_COMBAT: 'COMBAT_001',
+    INVALID_TARGET: 'COMBAT_002',
+    SKILL_ON_COOLDOWN: 'COMBAT_003',
+    INSUFFICIENT_MANA: 'COMBAT_004',
+    INSUFFICIENT_FUNDS: 'ECON_001',
+    TRADE_FAILED: 'ECON_002',
+    INVALID_PRICE: 'ECON_003',
+    SERVER_ERROR: 'SYS_001',
+    DATABASE_ERROR: 'SYS_002',
+    RATE_LIMIT: 'SYS_003',
+};
+exports.RATE_LIMITS = {
+    CHAT_MESSAGE: { max: 5, window: 5000 },
+    COMBAT_ACTION: { max: 10, window: 1000 },
+    TRADE_REQUEST: { max: 3, window: 60000 },
+    API_REQUEST: { max: 100, window: 60000 },
+};
+//# sourceMappingURL=index.js.map

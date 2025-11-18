@@ -1,0 +1,146 @@
+/* 字体已在 index.css 中统一定义，此处移除重复定义 */
+
+/* CSS 变量定义 - 水墨丹青主题(优化对比度) */
+:root {
+  /* 主色调 - 深褐色（水墨浓墨） */
+  --primary: #6b3410;
+  --primaryDark: #4a2408;
+  --primaryRGB: 107, 52, 16;
+  --secondary: #8b5a2b;
+
+  /* 背景色 - 宣纸色 */
+  --background: #f5f5dc;
+  --panel: #faf0e6;
+
+  /* 文本颜色 - 提高对比度 */
+  --text: #1a1a1a;              /* 深黑（浓墨） */
+  --textSecondary: #3d2817;     /* 深褐（重墨） */
+  --textDim: rgba(26, 26, 26, 0.6);  /* 浅墨 */
+
+  /* 边框与效果 */
+  --border: #6b3410;
+  --glow: rgba(107, 52, 16, 0.5);
+  --hover: rgba(107, 52, 16, 0.12);
+
+  /* 功能色 */
+  --success: #2d5016;           /* 深绿（竹青） */
+  --danger: #8b2500;            /* 深红（朱砂） */
+  --warning: #b8860b;           /* 暗金（赭石） */
+
+  --shadowHeavy: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+  /* 状态栏颜色 */
+  --hpBar: #8b2500;             /* 朱砂红 */
+  --mpBar: #2f5496;             /* 靛青蓝 */
+
+  /* 消息类型颜色 - 全部优化对比度 */
+  --msgSystem: #6b3410;         /* 深褐（系统） */
+  --msgNarrative: #1a1a1a;      /* 深黑（叙述） */
+  --msgDescription: #4a3520;    /* 棕褐（描述） */
+  --msgCommand: #2d5016;        /* 深绿（命令） */
+  --msgResponse: #2f2f2f;       /* 墨黑（响应） */
+  --msgCombat: #8b2500;         /* 朱砂（战斗） */
+  --msgAction: #b8860b;         /* 暗金（动作） */
+  --msgHelp: #4b0082;           /* 深紫（帮助） */
+  --msgError: #8b0000;          /* 深红（错误） */
+
+  /* 系统设置变量 */
+  --base-font-size: 14px;
+  --animation-duration: 100ms;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: 'Sarasa Term SC Nerd', monospace;
+  overflow: hidden;
+  font-size: var(--base-font-size);
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+.mud-game {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+  position: relative;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  /* 宣纸质感边缘效果 */
+  box-shadow: inset 0 0 100px rgba(139, 69, 19, 0.1);
+}
+
+/* 纸张纹理效果 */
+.mud-game::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(139, 69, 19, 0.02) 2px,
+      rgba(139, 69, 19, 0.02) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(139, 69, 19, 0.02) 2px,
+      rgba(139, 69, 19, 0.02) 4px
+    );
+  pointer-events: none;
+  opacity: 0.3;
+  z-index: 10;
+}
+
+/* 水墨边缘渗透效果 */
+.mud-game::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 80%,
+    rgba(139, 69, 19, 0.05) 100%
+  );
+  pointer-events: none;
+  z-index: 11;
+}
+
+.game-content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 280px 1fr 280px;
+  gap: 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+}
+
+.main-display {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+}

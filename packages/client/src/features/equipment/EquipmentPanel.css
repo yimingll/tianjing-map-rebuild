@@ -1,0 +1,414 @@
+/* 装备面板 - 分栏布局,直接使用 WindowTemplate 背景 */
+.equipment-panel-new {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: var(--text, #2c1810);
+  font-family: var(--font-family, 'Sarasa Term SC Nerd', monospace);
+  font-size: 14px;
+}
+
+/* 错误提示 */
+.equipment-error-new {
+  margin: 12px 16px;
+  padding: 10px 14px;
+  background: rgba(220, 20, 60, 0.08);
+  border: 1px solid rgba(220, 20, 60, 0.3);
+  border-left: 3px solid rgba(220, 20, 60, 0.6);
+  border-radius: 4px;
+  color: var(--msgCombat, #dc143c);
+  font-size: 13px;
+}
+
+/* 主内容区域：左右分栏 */
+.equipment-main-new {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  padding: 12px 16px;
+  overflow: hidden;
+}
+
+/* 左侧：装备槽列表 */
+.equipment-slots-new {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-right: 2px double var(--primary, #8b4513);
+  padding-right: 16px;
+  overflow-y: auto;
+}
+
+.slots-header {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--primary, #8b4513);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(139, 69, 19, 0.3);
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.slots-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.slot-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: transparent;
+  border: 1px solid rgba(139, 69, 19, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.slot-item:hover {
+  background: rgba(139, 69, 19, 0.03);
+  border-color: rgba(139, 69, 19, 0.4);
+  transform: translateX(3px);
+}
+
+.slot-item.selected {
+  background: rgba(139, 69, 19, 0.06);
+  border-color: var(--primary, #8b4513);
+  border-left-width: 3px;
+}
+
+.slot-item.selected::before {
+  content: '▸';
+  position: absolute;
+  left: 2px;
+  color: var(--primary, #8b4513);
+  font-size: 14px;
+}
+
+.slot-item.empty {
+  opacity: 0.6;
+}
+
+.slot-icon {
+  font-size: 20px;
+  min-width: 24px;
+  text-align: center;
+  filter: drop-shadow(0 1px 2px rgba(139, 69, 19, 0.3));
+}
+
+.slot-info {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+
+.slot-label {
+  font-size: 13px;
+  color: var(--textDim, #6b4423);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.slot-item-name {
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+}
+
+.slot-empty-text {
+  font-size: 13px;
+  color: var(--textDim, #6b4423);
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.slot-unequip-btn {
+  padding: 4px 10px;
+  background: transparent;
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  border-radius: 3px;
+  color: var(--text, #2c1810);
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  opacity: 0;
+}
+
+.slot-item:hover .slot-unequip-btn,
+.slot-item.selected .slot-unequip-btn {
+  opacity: 1;
+}
+
+.slot-unequip-btn:hover {
+  background: rgba(220, 20, 60, 0.1);
+  border-color: rgba(220, 20, 60, 0.3);
+  color: var(--msgCombat, #dc143c);
+  transform: translateY(-1px);
+}
+
+.loading-message-new {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--textDim, #6b4423);
+  font-size: 14px;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* 右侧：属性统计 */
+.equipment-stats-new {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-left: 16px;
+}
+
+.stats-header {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--primary, #8b4513);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(139, 69, 19, 0.3);
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.stats-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.no-stats-new {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--textDim, #6b4423);
+  font-size: 14px;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* 属性分组 */
+.stat-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stat-group-title {
+  text-align: center;
+  color: var(--textDim, #6b4423);
+  font-size: 12px;
+  font-weight: 600;
+  margin: 8px 0 6px;
+  padding: 4px 0;
+  border-top: 1px solid rgba(139, 69, 19, 0.15);
+  border-bottom: 1px solid rgba(139, 69, 19, 0.15);
+  letter-spacing: 1px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  background: transparent;
+  border-left: 2px solid rgba(139, 69, 19, 0.2);
+  border-radius: 3px;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.stat-row:hover {
+  background: rgba(139, 69, 19, 0.03);
+  border-left-color: rgba(139, 69, 19, 0.4);
+}
+
+.stat-label {
+  color: var(--textDim, #6b4423);
+  font-weight: 500;
+}
+
+.stat-value {
+  color: #4a7c59;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* 选中装备详情 */
+.selected-detail {
+  margin-top: 16px;
+  padding-top: 16px;
+}
+
+.detail-divider {
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(139, 69, 19, 0.3) 50%,
+    transparent 100%
+  );
+  margin-bottom: 12px;
+}
+
+.detail-title {
+  text-align: center;
+  color: var(--primary, #8b4513);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.detail-name {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.detail-type {
+  text-align: center;
+  font-size: 12px;
+  color: var(--textDim, #6b4423);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.detail-description {
+  padding: 10px 12px;
+  border-left: 3px solid rgba(139, 69, 19, 0.3);
+  border-radius: 3px;
+  color: var(--textDim, #6b4423);
+  font-size: 12px;
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 10px;
+  background: rgba(139, 69, 19, 0.02);
+}
+
+.detail-attrs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-attrs-title {
+  font-size: 12px;
+  color: var(--textDim, #6b4423);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.detail-attr-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background: transparent;
+  border-left: 2px solid rgba(139, 69, 19, 0.25);
+  border-radius: 3px;
+  font-size: 12px;
+  color: var(--textDim, #6b4423);
+}
+
+.detail-attr-value {
+  color: #4a7c59;
+  font-weight: bold;
+}
+
+/* 底部操作栏 */
+.equipment-footer-new {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-top: 2px double var(--primary, #8b4513);
+}
+
+.equipment-footer-new .footer-btn {
+  padding: 6px 14px;
+  background: transparent;
+  border: 1px solid var(--primary, #8b4513);
+  border-radius: 4px;
+  color: var(--primary, #8b4513);
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.equipment-footer-new .footer-btn:hover:not(:disabled) {
+  background: rgba(139, 69, 19, 0.08);
+  border-color: var(--primary, #8b4513);
+  transform: translateY(-1px);
+}
+
+.equipment-footer-new .footer-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(0.3);
+}
+
+.equipment-footer-new .footer-hint {
+  font-size: 11px;
+  color: var(--textDim, #6b4423);
+  opacity: 0.8;
+}
+
+/* 滚动条样式 */
+.equipment-slots-new::-webkit-scrollbar,
+.equipment-stats-new::-webkit-scrollbar {
+  width: 8px;
+}
+
+.equipment-slots-new::-webkit-scrollbar-track,
+.equipment-stats-new::-webkit-scrollbar-track {
+  background: rgba(139, 69, 19, 0.05);
+  border-radius: 4px;
+}
+
+.equipment-slots-new::-webkit-scrollbar-thumb,
+.equipment-stats-new::-webkit-scrollbar-thumb {
+  background: var(--primary, #8b4513);
+  border-radius: 4px;
+  opacity: 0.5;
+}
+
+.equipment-slots-new::-webkit-scrollbar-thumb:hover,
+.equipment-stats-new::-webkit-scrollbar-thumb:hover {
+  opacity: 0.7;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .equipment-main-new {
+    flex-direction: column;
+  }
+
+  .equipment-slots-new {
+    border-right: none;
+    border-bottom: 2px double var(--primary, #8b4513);
+    padding-right: 0;
+    padding-bottom: 16px;
+    max-height: 40%;
+  }
+
+  .equipment-stats-new {
+    padding-left: 0;
+    padding-top: 16px;
+  }
+}

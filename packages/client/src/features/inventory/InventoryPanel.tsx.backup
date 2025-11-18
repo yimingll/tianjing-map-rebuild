@@ -1,0 +1,163 @@
+/**
+ * 背包面板组件
+ * 支持物品筛选、拖拽接收装备卸下
+ */
+
+import React, { useState } from 'react'
+import { useDrop } from 'react-dnd'
+import { useInventoryStore } from './inventoryStore'
+import { useEquipmentStore } from '@/features/equipment/equipmentStore'
+import { InventoryItem } from './InventoryItem'
+import { SlotType } from '@/types/equipment'
+import { gameClient } from '@/lib/gameClient'
+import './InventoryPanel.css'
+
+interface InventoryPanelProps {
+  isOpen?: boolean
+  onClose?: () => void
+}
+
+export const InventoryPanel: React.FC<InventoryPanelProps> = ({ onClose }) => {
+  const [filter, setFilter] = useState<'all' | 'equipment' | 'consumable' | 'material'>('all')
+  const [searchText, setSearchText] = useState('')
+  const { items, capacity, getTotalWeight } = useInventoryStore()
+  const { unequipItem } = useEquipmentStore()
+
+  // 接收卸下的装备
+  const [{ isOver }, drop] = useDrop({
+    accept: 'EQUIPPED_ITEM',
+    drop: (item: { slot_type: SlotType }) => {
+      unequipItem(item.slot_type)
+    },
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+    }),
+  })
+
+  const filteredItems = items.filter((item) => {
+    // 类型筛选
+    const matchesType = filter === 'all' || item.item_type === filter
+
+    // 搜索筛选
+    const matchesSearch = searchText === '' ||
+      item.item_name.toLowerCase().includes(searchText.toLowerCase()) ||
+      (item.description && item.description.toLowerCase().includes(searchText.toLowerCase()))
+
+    return matchesType && matchesSearch
+  })
+
+  const handleUse = (instanceId: number) => {
+    const item = items.find((i) => i.instance_id === instanceId)
+    if (item) {
+      gameClient.发送命令(`use ${item.item_name}`)
+    }
+  }
+
+  const handleDrop = (instanceId: number) => {
+    const item = items.find((i) => i.instance_id === instanceId)
+    if (item) {
+      if (window.confirm(`确定要丢弃 ${item.item_name} 吗?`)) {
+        gameClient.发送命令(`drop ${item.item_name}`)
+      }
+    }
+  }
+
+  return (
+    <div ref={drop} className={`inventory-panel ${isOver ? 'drag-over' : ''}`}>
+      <div className="inventory-header">
+        <h2 className="panel-title">储物袋</h2>
+        <button
+          className="close-btn"
+          onClick={onClose}
+          aria-label="关闭背包"
+        >
+          ×
+        </button>
+
+        <div className="inventory-stats">
+          <span className="stat-item">
+            <span className="stat-label">物品:</span>
+            <span className="stat-value">{items.length} / {capacity}</span>
+          </span>
+          <span className="stat-divider">|</span>
+          <span className="stat-item">
+            <span className="stat-label">负重:</span>
+            <span className="stat-value">{getTotalWeight()}</span>
+          </span>
+        </div>
+
+        {/* 搜索框 */}
+        <div className="search-container">
+          <input
+            type="text"
+            className="search-input"
+            placeholder="搜索物品名称或描述..."
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+          {searchText && (
+            <button
+              className="clear-search-btn"
+              onClick={() => setSearchText('')}
+              aria-label="清空搜索"
+            >
+              ×
+            </button>
+          )}
+        </div>
+
+        <div className="filter-buttons">
+          <button
+            className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
+            onClick={() => setFilter('all')}
+          >
+            全部
+          </button>
+          <button
+            className={`filter-btn ${filter === 'equipment' ? 'active' : ''}`}
+            onClick={() => setFilter('equipment')}
+          >
+            装备
+          </button>
+          <button
+            className={`filter-btn ${filter === 'consumable' ? 'active' : ''}`}
+            onClick={() => setFilter('consumable')}
+          >
+            消耗品
+          </button>
+          <button
+            className={`filter-btn ${filter === 'material' ? 'active' : ''}`}
+            onClick={() => setFilter('material')}
+          >
+            材料
+          </button>
+        </div>
+      </div>
+
+      <div className="inventory-grid">
+        {filteredItems.map((item) => (
+          <InventoryItem
+            key={item.instance_id}
+            item={item}
+            onUse={handleUse}
+            onDrop={handleDrop}
+          />
+        ))}
+
+        {/* 空槽位提示 */}
+        {filteredItems.length === 0 && (
+          <div className="empty-inventory">
+            <div className="empty-icon">💼</div>
+            <div className="empty-text">暂无物品</div>
+          </div>
+        )}
+      </div>
+
+      {isOver && (
+        <div className="drop-overlay">
+          <div className="drop-hint">松开以卸下装备</div>
+        </div>
+      )}
+    </div>
+  )
+}

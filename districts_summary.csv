@@ -1,0 +1,13 @@
+District_ID,District_Name,Type,Part,Room_Count,Location_Count,Key_Rooms,Description
+south_gate_district,南门区,gate,1,11,1,"tj_gate_south_outside,tj_gate_south_passage,tj_gate_south_inside,tj_gate_south_wall_east,tj_gate_south_wall_west,tj_gate_south_east_plaza,tj_gate_south_west_plaza,tj_carriage_station","南方主要出入口,守卫森严"
+imperial_district,皇城区,imperial,1,31,3,"tj_palace_square,tj_palace_gate,tj_palace_courtyard,tj_palace_main_hall,tj_guozijian_gate,tj_guozijian_hall,tj_qintianjian_tower","皇宫及相关机构,权力中心"
+commercial_district,商业区,commercial,1,10,2,"tj_street_royal_south_01,tj_street_royal_mid_01,tj_street_royal_north_01,tj_shop_weapons,tj_shop_antique,tj_tavern_drunken_immortal,tj_auction_house,tj_bank","高端商业街,文化中心"
+east_district,东城区,residential,2,20,2,"tj_bai_mansion_gate,tj_bai_mansion_front_yard,tj_bai_mansion_main_hall,tj_bai_mansion_back_yard,tj_street_east_mansion,tj_mansion_wang,tj_street_east_market,tj_market_east_main,tj_east_clinic,tj_east_temple","豪门大院聚集,白家老宅所在"
+west_district,西城区,residential,2,16,1,"tj_street_west_main,tj_workshop_district,tj_workshop_carpenter,tj_workshop_blacksmith,tj_west_market,tj_west_residential,tj_west_alley_01,tj_west_alley_02,tj_west_clinic,tj_west_noodle_shop,tj_west_pawn_shop,tj_west_well","平民区,手工作坊聚集"
+government_district,官府区,government,2,12,2,"tj_ministry_plaza,tj_ministry_personnel,tj_ministry_revenue,tj_ministry_rites,tj_ministry_war,tj_ministry_justice,tj_ministry_works,tj_prison,tj_prison_underground,tj_barracks_main,tj_barracks_yard","行政中心,军事指挥部"
+north_gate_district,北门区,gate,3,8,1,"tj_gate_north_outside,tj_gate_north_passage,tj_gate_north_inside,tj_gate_north_tower,tj_north_warehouse,tj_north_temp_barracks,tj_wall_north_east,tj_wall_north_west","北方防御要塞,通往北疆"
+east_gate_district,东门区,gate,3,4,1,"tj_gate_east_outside,tj_gate_east_passage,tj_gate_east_inside,tj_east_cargo_depot","东方贸易出入口,商旅繁忙"
+west_gate_district,西门区,gate,3,4,1,"tj_gate_west_outside,tj_gate_west_passage,tj_gate_west_inside,tj_west_inn","西方丝路出入口,异域风情"
+city_wall_district,城墙区,fortification,3,8,1,"tj_wall_northeast_corner,tj_wall_northwest_corner,tj_wall_southeast_corner,tj_wall_southwest_corner,tj_wall_east_main,tj_wall_west_main,tj_wall_south_east_corner,tj_wall_south_west_corner","环城防线,四角楼把守"
+slum_district,贫民区,slum,3,11,1,"tj_slum_entrance,tj_slum_main_alley,tj_slum_orphanage,tj_slum_soup_kitchen,tj_slum_shack_area,tj_slum_gambling_den,tj_slum_drug_den,tj_slum_black_market,tj_slum_beggar_den,tj_slum_fight_pit,tj_slum_charity_clinic","城市最底层,社会矛盾集中"
+outskirts_district,城郊区,outskirts,3,5,1,"tj_road_south_01,tj_farm_01,tj_road_north_01,tj_road_east_01,tj_road_west_01","四方官道,农业生产区"

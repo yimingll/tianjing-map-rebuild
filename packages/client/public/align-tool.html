@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对齐工具 - Sarasa Term SC Nerd</title>
+  <style>
+    @font-face {
+      font-family: 'Sarasa Term SC Nerd';
+      src: url('/fonts/SarasaTermSCNerd-Regular.ttf') format('truetype');
+      font-weight: 400;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Sarasa Term SC Nerd', monospace;
+      background: #1a1a1a;
+      color: #e0e0e0;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #4CAF50;
+    }
+
+    .editor-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 600px;
+      font-family: 'Sarasa Term SC Nerd', monospace;
+      font-size: 14px;
+      line-height: 1.2;
+      background: #2a2a2a;
+      color: #e0e0e0;
+      border: 1px solid #3a3a3a;
+      padding: 10px;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    .preview {
+      white-space: pre;
+      background: #2a2a2a;
+      padding: 10px;
+      border: 1px solid #3a3a3a;
+      border-radius: 4px;
+      overflow-x: auto;
+      height: 600px;
+      overflow-y: auto;
+    }
+
+    .ruler {
+      white-space: pre;
+      color: #666;
+      font-size: 12px;
+      margin-bottom: 10px;
+      background: #1e1e1e;
+      padding: 5px;
+      border-radius: 4px;
+    }
+
+    .controls {
+      margin: 20px 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    button.secondary {
+      background: #2196F3;
+    }
+
+    button.secondary:hover {
+      background: #0b7dda;
+    }
+
+    .stats {
+      background: #2a2a2a;
+      padding: 15px;
+      border-radius: 4px;
+      margin-top: 20px;
+    }
+
+    .stats h3 {
+      margin-top: 0;
+      color: #64B5F6;
+    }
+
+    .line-info {
+      font-size: 12px;
+      color: #999;
+      margin-top: 5px;
+    }
+
+    .error-line {
+      background-color: rgba(244, 67, 54, 0.1);
+    }
+
+    .good-line {
+      background-color: rgba(76, 175, 80, 0.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 对齐工具 - Sarasa Term SC Nerd 字体</h1>
+
+    <div class="ruler">0----+----1----+----2----+----3----+----4----+----5----+----6----+----7----+</div>
+
+    <div class="controls">
+      <button onclick="updatePreview()">🔄 更新预览</button>
+      <button class="secondary" onclick="copyToClipboard()">📋 复制结果</button>
+      <button class="secondary" onclick="loadSample()">📝 加载示例</button>
+      <button class="secondary" onclick="autoAlign()">✨ 自动对齐 (实验性)</button>
+    </div>
+
+    <div class="editor-container">
+      <div>
+        <h3>编辑区</h3>
+        <textarea id="editor" oninput="updatePreview()">╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║         ╔═══╗                                          ╔═══╗         ║
+║         ║ ✦ ║          X I U X I A N    M U D          ║ ✦ ║         ║
+╚══════════════════════════════════════════════════════════════════════╝</textarea>
+      </div>
+
+      <div>
+        <h3>预览区</h3>
+        <div class="preview" id="preview"></div>
+      </div>
+    </div>
+
+    <div class="stats" id="stats"></div>
+  </div>
+
+  <script>
+    let canvas, ctx;
+
+    function init() {
+      canvas = document.createElement('canvas');
+      ctx = canvas.getContext('2d');
+      ctx.font = '14px "Sarasa Term SC Nerd"';
+
+      // 等待字体加载
+      document.fonts.ready.then(() => {
+        updatePreview();
+      });
+    }
+
+    function measureWidth(text) {
+      return ctx.measureText(text).width;
+    }
+
+    function updatePreview() {
+      const editor = document.getElementById('editor');
+      const preview = document.getElementById('preview');
+      const stats = document.getElementById('stats');
+
+      const lines = editor.value.split('\n');
+      let html = '';
+      let statsHtml = '<h3>行宽度统计</h3>';
+      let totalErrors = 0;
+
+      // 测量第一行作为基准
+      const firstLineWidth = measureWidth(lines[0]);
+      const targetWidth = firstLineWidth;
+
+      lines.forEach((line, index) => {
+        const width = measureWidth(line);
+        const diff = width - targetWidth;
+        const isGood = Math.abs(diff) < 1; // 允许1像素误差
+
+        let lineClass = isGood ? 'good-line' : 'error-line';
+        html += `<span class="${lineClass}">${escapeHtml(line)}</span>\n`;
+
+        let status = isGood ? '✅' : '❌';
+        if (!isGood) totalErrors++;
+
+        statsHtml += `<div>第 ${index + 1} 行: ${status} 宽度 ${width.toFixed(2)}px (差值: ${diff > 0 ? '+' : ''}${diff.toFixed(2)}px)</div>`;
+      });
+
+      preview.innerHTML = html;
+      statsHtml += `<div style="margin-top:15px; padding-top:15px; border-top:1px solid #3a3a3a;">`;
+      statsHtml += `总行数: ${lines.length} | 对齐: ${lines.length - totalErrors} | 未对齐: ${totalErrors}`;
+      statsHtml += `</div>`;
+      stats.innerHTML = statsHtml;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function loadSample() {
+      const sample = `╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║         ╔═══╗                                          ╔═══╗         ║
+║         ║   ║==========================================║   ║         ║
+║         ║   ║                                          ║   ║         ║
+║         ║ ✦ ║          X I U X I A N    M U D          ║ ✦ ║         ║
+║         ║   ║                                          ║   ║         ║
+║         ║   ║          ━━━━━━━━━━━━━━━━━━━━━━          ║   ║         ║
+║         ║   ║             《 玄 鉴 仙 录 》            ║   ║         ║
+║         ║   ║          ━━━━━━━━━━━━━━━━━━━━━━          ║   ║         ║
+║         ║   ║                                          ║   ║         ║
+║         ║   ║     Xuanjian Chronicles of Immortals     ║   ║         ║
+║         ║   ║                                          ║   ║         ║
+║         ║   ║==========================================║   ║         ║
+║         ╚═══╝                                          ╚═══╝         ║
+║                                                                      ║
+║           ✿~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~✿               ║
+║                                                                      ║
+║                       "以玄鉴之眼,观万世沉浮"                        ║
+║                       "以仙录之笔,书千秋传奇"                        ║
+║                                                                      ║
+║           ✿~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~✿               ║
+║                                                                      ║
+║    ╔══════════════════════════════════════════════════════════════╗  ║
+║    ║                                                              ║  ║
+║    ║                          【卷首语】                          ║  ║
+║    ║                                                              ║  ║
+║    ║          天地初开,鸿蒙未判,上古仙人炼制玄鉴宝镜,          ║  ║
+║    ║              可照真伪,辨善恶,察天机,悟大道。              ║  ║
+║    ║                                                              ║  ║
+║    ║            岁月流转,灵气复苏,修真盛世再临人间。            ║  ║
+║    ║           无数修士踏上求道之路,于这仙录之中留名。          ║  ║
+║    ║                                                              ║  ║
+║    ╚══════════════════════════════════════════════════════════════╝  ║
+╚══════════════════════════════════════════════════════════════════════╝`;
+
+      document.getElementById('editor').value = sample;
+      updatePreview();
+    }
+
+    function autoAlign() {
+      alert('自动对齐功能开发中...\n请手动调整每行末尾的空格数量以对齐');
+    }
+
+    function copyToClipboard() {
+      const editor = document.getElementById('editor');
+      editor.select();
+      document.execCommand('copy');
+      alert('已复制到剪贴板！');
+    }
+
+    // 初始化
+    window.addEventListener('load', init);
+  </script>
+</body>
+</html>
